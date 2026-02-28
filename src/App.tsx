@@ -1,19 +1,30 @@
-import { Button } from "./components/ui/button";
-
 function App() {
   return (
     <>
-      <div className="flex items-center flex-col justify-center mt-52">
-        <div className="mb-5 capitalize text-xl font-semibold">home page</div>
+      <div id="navbar" className="mb-15 flex items-center space-x-10 ">
         <div>
-          <Button variant="default">Click</Button>
-          <Button variant="destructive">Click</Button>
-          <Button variant="ghost">Click</Button>
-          <Button variant="link">Click</Button>
-          <Button variant="link">Click</Button>
-          <Button variant="outline">Click</Button>
-          <Button variant="secondary">Click</Button>
+          <img src="/logo.png" alt="logo" className="w-30" />
         </div>
+        <ul className="flex space-x-5 text-sm">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Shop</a>
+          </li>
+          <li>
+            <a href="#">About Us</a>
+          </li>
+          <li>
+            <a href="#">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <div id="faq" className="mt-15">
+        faq section
+      </div>
+      <div id="footer" className="mt-15">
+        footer section
       </div>
     </>
   );
