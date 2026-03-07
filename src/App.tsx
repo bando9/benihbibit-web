@@ -1,33 +1,21 @@
-function App() {
+import { Button } from "@/components/ui/button"
+
+export function App() {
   return (
-    <>
-      <div id="navbar" className="mb-15 flex items-center space-x-10 ">
+    <div className="flex min-h-svh p-6">
+      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
         <div>
-          <img src="/logo.png" alt="logo" className="w-30" />
+          <h1 className="font-medium">Project ready!</h1>
+          <p>You may now add components and start building.</p>
+          <p>We&apos;ve already added the button component for you.</p>
+          <Button className="mt-2">Button</Button>
         </div>
-        <ul className="flex space-x-5 text-sm">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Shop</a>
-          </li>
-          <li>
-            <a href="#">About Us</a>
-          </li>
-          <li>
-            <a href="#">Contact Us</a>
-          </li>
-        </ul>
+        <div className="font-mono text-xs text-muted-foreground">
+          (Press <kbd>d</kbd> to toggle dark mode)
+        </div>
       </div>
-      <div id="faq" className="mt-15">
-        faq section
-      </div>
-      <div id="footer" className="mt-15">
-        footer section
-      </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
