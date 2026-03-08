@@ -1,3 +1,5 @@
+import Logo from "@/assets/logo.png"
+
 import {
   RiSearchLine,
   RiShoppingBasketLine,
@@ -8,7 +10,7 @@ export function App() {
   return (
     <div className="navbar mt-3 flex items-center justify-evenly">
       <div>
-        <img src="/assets/logo.png" alt="" />
+        <img src={Logo} alt="" />
       </div>
       <ul className="flex items-center justify-center space-x-5">
         <li>
