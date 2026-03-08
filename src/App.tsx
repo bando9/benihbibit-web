@@ -1,18 +1,46 @@
-import { Button } from "@/components/ui/button"
+import {
+  RiSearchLine,
+  RiShoppingBasketLine,
+  RiUserLine,
+} from "@remixicon/react"
 
 export function App() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <div className="navbar mt-3 flex items-center justify-evenly">
+      <div>
+        <img src="/src/assets/logo.png" alt="" />
+      </div>
+      <ul className="flex items-center justify-center space-x-5">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/shop">Shop</a>
+        </li>
+        <li>
+          <a href="/about">About Us</a>
+        </li>
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+      </ul>
+
+      <div className="flex items-center justify-center space-x-5">
+        <div className="flex w-full cursor-pointer justify-center rounded-3xl bg-neutral-200 p-1.5 text-center">
+          <RiSearchLine size={24} />
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
+        <a
+          href="#"
+          className="flex w-full cursor-pointer justify-center rounded-3xl bg-neutral-200 p-1.5 text-center"
+        >
+          <RiUserLine size={24} />
+        </a>
+        <a
+          href="#"
+          className="flex w-full cursor-pointer justify-center rounded-3xl bg-neutral-200 p-1.5 text-center"
+        >
+          <RiShoppingBasketLine size={24} />
+        </a>
       </div>
     </div>
   )
