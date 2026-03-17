@@ -1,22 +1,25 @@
-import { useQuery } from "@tanstack/react-query"
+import { $api } from "@/modules/common/api"
 
 export default function Products() {
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: () =>
-      fetch("https://benihbibit-api.bandomega.com/products").then(
-        (res) => res.json
-      ),
-  })
+  const { data: products, error, isLoading } = $api.useQuery("get", "/products")
 
-  if (isPending) {
+  if (isLoading || !products) {
     return <span>Loading...</span>
   }
 
-  if (isError) {
-    return <span>Error: {error.message}</span>
+  if (error) {
+    return <span>Error: {error}</span>
   }
-  console.log(data.name)
 
-  return <div>{data.length}</div>
+  const productsList = products.data
+
+  return (
+    <div>
+      <ul>
+        {productsList.map((product) => (
+          <li key={product.id}>{product.name} </li>
+        ))}
+      </ul>
+    </div>
+  )
 }

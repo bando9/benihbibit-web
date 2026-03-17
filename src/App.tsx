@@ -6,6 +6,7 @@ import {
   RiUserLine,
 } from "@remixicon/react"
 import { CarouselEx } from "./components/carousel-ex"
+import Products from "./components/products"
 
 export function App() {
   return (
@@ -51,6 +52,8 @@ export function App() {
       <div className="mx-auto mt-10 flex w-200">
         <CarouselEx />
       </div>
+
+      <Products />
     </div>
   )
 }
