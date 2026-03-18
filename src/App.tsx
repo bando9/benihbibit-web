@@ -5,8 +5,8 @@ import {
   RiShoppingBasketLine,
   RiUserLine,
 } from "@remixicon/react"
-import { CarouselEx } from "./components/carousel-ex"
 import Products from "./components/products"
+import { CarouselEx } from "./components/carousel-ex"
 
 export function App() {
   return (
@@ -49,10 +49,7 @@ export function App() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex w-200">
-        <CarouselEx />
-      </div>
-
+      <CarouselEx />
       <Products />
     </div>
   )

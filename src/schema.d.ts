@@ -45,7 +45,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get Product with optional pagination and metadata */
+        /** @description Get Products with optional pagination, filter, & sort */
         get: {
             parameters: {
                 query?: {
@@ -62,34 +62,26 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Successfully get products with optional pagination */
+                /** @description Successfully get products with optional pagination, filter, & sort */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
                         "application/json": {
-                            data: {
-                                id: string;
-                                slug: string;
-                                name: string;
-                                sku: string;
-                                price: number;
-                                stockQuantity: number;
-                                imageUrl: string;
-                                description: string;
-                                /** Format: date-time */
-                                createdAt: string;
-                                /** Format: date-time */
-                                updatedAt: string;
-                            }[];
-                            meta: {
-                                total: number;
-                                page: number;
-                                pageSize: number;
-                                totalPages: number;
-                            };
-                        };
+                            id: string;
+                            slug: string;
+                            name: string;
+                            sku: string;
+                            price: number;
+                            stockQuantity: number;
+                            imageUrl: string;
+                            description: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        }[];
                     };
                 };
             };
@@ -181,40 +173,6 @@ export interface paths {
                 };
                 /** @description Product not found */
                 404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/cart": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description Get user's cart */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Success Get user's cart */
-                200: {
                     headers: {
                         [name: string]: unknown;
                     };

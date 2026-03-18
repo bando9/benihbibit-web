@@ -11,13 +11,15 @@ export default function Products() {
     return <span>Error: {error}</span>
   }
 
-  const productsList = products.data
-
   return (
     <div>
+      tes
       <ul>
-        {productsList.map((product) => (
-          <li key={product.id}>{product.name} </li>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name}
+            <img src={product.imageUrl} alt={product.name} />
+          </li>
         ))}
       </ul>
     </div>
