@@ -11,7 +11,7 @@ const CardHeader = [
   {
     id: 1,
     name: "Header1",
-    url: "header-5.png",
+    url: "header-1.png",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const CardHeader = [
   },
 ]
 
-export function CarouselEx() {
+export function CarouselHeader() {
   return (
     <Carousel className="w-full max-w-48 sm:max-w-xs">
       <CarouselContent>

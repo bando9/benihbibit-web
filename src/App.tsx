@@ -6,7 +6,8 @@ import {
   RiUserLine,
 } from "@remixicon/react"
 import Products from "./components/products"
-import { CarouselEx } from "./components/carousel-ex"
+import { CarouselHeader } from "./components/carousel-header"
+import Footer from "./components/footer"
 
 export function App() {
   return (
@@ -49,8 +50,9 @@ export function App() {
         </div>
       </div>
 
-      <CarouselEx />
+      <CarouselHeader />
       <Products />
+      <Footer />
     </div>
   )
 }
