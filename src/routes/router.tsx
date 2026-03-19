@@ -2,7 +2,7 @@ import MainLayout from "@/layouts/main-layout"
 import About from "@/pages/about"
 import Cart from "@/pages/cart"
 import Contact from "@/pages/contact"
-import Home from "@/pages/home"
+import { Home } from "@/pages/home"
 import Shop from "@/pages/shop"
 import { createBrowserRouter } from "react-router"
 
