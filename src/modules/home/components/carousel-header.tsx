@@ -10,8 +10,8 @@ import {
 const CardHeader = [
   {
     id: 1,
-    name: "Header1",
-    url: "header-1.png",
+    name: "Slide 1",
+    url: "slide-1.jpg",
   },
   {
     id: 2,
