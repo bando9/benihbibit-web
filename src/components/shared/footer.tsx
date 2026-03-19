@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <div className="mt-15 flex flex-col items-center justify-center bg-accent pt-5 pb-2">
+    <div className="static bottom-0 mt-15 flex flex-col items-center justify-center bg-accent pt-5 pb-2">
       <div className="flex flex-col items-center">
         <div>
           <img src={Logo} alt="logo benihbunbun" className="rounded-2xl" />

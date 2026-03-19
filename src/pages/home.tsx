@@ -1,15 +1,11 @@
-import { CarouselHeader } from "@/modules/home/components/carousel-header"
+import { HomeCarousel } from "@/modules/home/components/home-carousel"
 import ProductFeatured from "@/modules/home/components/product-featured"
-import Footer from "@/components/shared/footer"
-import Navbar from "@/components/shared/navbar"
 
 function Home() {
   return (
     <>
-      <Navbar />
-      <CarouselHeader />
+      <HomeCarousel />
       <ProductFeatured />
-      <Footer />
     </>
   )
 }

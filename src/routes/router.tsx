@@ -1,3 +1,4 @@
+import MainLayout from "@/layouts/main-layout"
 import About from "@/pages/about"
 import Cart from "@/pages/cart"
 import Contact from "@/pages/contact"
@@ -8,22 +9,16 @@ import { createBrowserRouter } from "react-router"
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/shop",
-    element: <Shop />,
+    Component: MainLayout,
+    children: [
+      { index: true, Component: Home },
+      { path: "about", Component: About },
+      { path: "contact", Component: Contact },
+      { path: "shop", Component: Shop },
+    ],
   },
   {
     path: "/cart",
     element: <Cart />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
 ])

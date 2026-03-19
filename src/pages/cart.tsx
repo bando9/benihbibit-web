@@ -1,5 +1,11 @@
+import Footer from "@/components/shared/footer"
+import Navbar from "@/components/shared/navbar"
+
 function Cart() {
-  return <div>Cart</div>
+  return <>
+      <Navbar />
+      <Footer />
+    </>
 }
 
 export default Cart
