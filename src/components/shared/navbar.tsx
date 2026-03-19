@@ -8,10 +8,10 @@ import {
 
 function Navbar() {
   return (
-    <div className="navbar mt-3 flex items-center justify-evenly">
-      <div>
+    <div className="navbar mt-3 mb-10 flex items-center justify-evenly">
+      <a href="/">
         <img src={Logo} alt="" />
-      </div>
+      </a>
       <ul className="flex items-center justify-center space-x-5">
         <li>
           <a href="/">Home</a>

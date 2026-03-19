@@ -1,7 +1,7 @@
 import { formattedCurrency } from "@/utils/common"
 import { $api } from "@/modules/products/api"
 
-export default function Products() {
+export default function ProductFeatured() {
   const { data: products, error, isLoading } = $api.useQuery("get", "/products")
 
   if (isLoading || !products) {
@@ -14,7 +14,7 @@ export default function Products() {
 
   return (
     <div className="mx-15 mt-10">
-      <ul className="grid grid-cols-4 gap-4">
+      <ul className="grid grid-cols-5 gap-5">
         {products.map((product) => (
           <li key={product.id}>
             <div>
