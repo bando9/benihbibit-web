@@ -38,7 +38,7 @@ function Navbar() {
           <RiUserLine size={24} />
         </a>
         <a
-          href="#"
+          href="/cart"
           className="flex w-full cursor-pointer justify-center rounded-3xl bg-neutral-200 p-1.5 text-center"
         >
           <RiShoppingBasketLine size={24} />
