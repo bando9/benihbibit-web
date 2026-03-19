@@ -1,5 +1,5 @@
-import { formattedCurrency } from "@/lib/common"
-import { $api } from "@/modules/common/api"
+import { formattedCurrency } from "@/utils/common"
+import { $api } from "@/modules/products/api"
 
 export default function Products() {
   const { data: products, error, isLoading } = $api.useQuery("get", "/products")

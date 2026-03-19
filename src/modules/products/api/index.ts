@@ -1,6 +1,6 @@
 import createFetchClient from "openapi-fetch"
 import createClient from "openapi-react-query"
-import type { paths } from "@/schema"
+import type { paths } from "@/modules/products/schema/schema"
 
 const fetchClient = createFetchClient<paths>({
   baseUrl: import.meta.env.VITE_API_URL,
