@@ -1,5 +1,5 @@
 import { Slider } from "@/components/ui/slider"
-import { RiEqualizer2Line } from "@remixicon/react"
+import { RiEqualizer2Line, RiShoppingBasketLine } from "@remixicon/react"
 
 import {
   Select,
@@ -9,8 +9,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { $api } from "@/modules/products/api"
+import { formattedCurrency } from "@/utils/common"
+import ProductSkeleton from "@/modules/products/components/product-skeleton"
 
 function Shop() {
+  const {
+    data: products,
+    error,
+    isLoading,
+  } = $api.useQuery("get", "/products", {
+    query: {
+      page: 1,
+      pageSize: 8,
+      sortBy: "price",
+      sortOrder: "desc",
+    },
+  })
+
+  console.log(products)
+
+  if (error) {
+    return <span>Error: {error}</span>
+  }
+
   return (
     <>
       <div className="mx-15 mb-5 flex items-center justify-between">
@@ -25,7 +47,6 @@ function Shop() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {/* <SelectLabel>Fruits</SelectLabel> */}
                 <SelectItem value="newest">Newest Arrivals</SelectItem>
                 <SelectItem value="price-asc">Price: Low to High</SelectItem>
                 <SelectItem value="price-desc">Price: High to Low</SelectItem>
@@ -50,8 +71,36 @@ function Shop() {
             />
           </div>
         </aside>
-
-        <div className="ms-4 me-15 w-full bg-primary">dajwbhdawbd</div>
+        <div className="ms-4 me-15 w-full">
+          <ul className="grid grid-cols-4 gap-3">
+            {isLoading
+              ? Array.from({ length: 8 }).map((_, i) => {
+                  return (
+                    <li key={i}>
+                      <ProductSkeleton />
+                    </li>
+                  )
+                })
+              : products?.map((product) => (
+                  <li key={product.id}>
+                    <div className="overflow-hidden rounded-xl bg-primary">
+                      <img src={product.imageUrl} alt={product.name} />
+                      <div className="flex h-20 items-center justify-between p-3">
+                        <div className="text-sm text-accent">
+                          <p>{product.name}</p>
+                          <p className="text-base font-bold">
+                            {formattedCurrency(product.price)}
+                          </p>
+                        </div>
+                        <div className="cursor-pointer rounded-full bg-accent p-1 hover:bg-chart-1">
+                          <RiShoppingBasketLine />
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+          </ul>
+        </div>
       </div>
     </>
   )
