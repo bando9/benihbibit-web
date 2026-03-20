@@ -28,7 +28,7 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      <div className="mt-5 flex space-x-10">
+      <div className="mt-5 flex space-x-10 pb-10">
         <a href="https://www.instagram.com/benihbunbun" target="blank">
           <RiInstagramLine />
         </a>
@@ -44,9 +44,6 @@ export default function Footer() {
         >
           <RiTiktokLine />
         </a>
-      </div>
-      <div className="mt-10 flex w-250 items-center justify-center border-t-2 border-accent-foreground pt-3">
-        <p>© 2026 Benihbibit. All right reserved.</p>
       </div>
     </div>
   )
