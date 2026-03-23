@@ -39,7 +39,7 @@ export function HomeCarousel() {
   return (
     <div className="mx-auto flex justify-center">
       <Carousel
-        className="w-full max-w-225 sm:max-w-125 md:max-w-175"
+        className="w-full max-w-100 sm:max-w-125 md:max-w-230"
         plugins={[
           Autoplay({
             delay: 7000,

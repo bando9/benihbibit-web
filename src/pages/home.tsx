@@ -15,10 +15,12 @@ export function Home() {
   }
 
   return (
-    <>
+    <div className="space-y-28">
       <HomeCarousel />
+
       <ProductFeatured products={products} />
+
       <FeatureServices />
-    </>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 import type { paths } from "@/modules/products/schema/schema"
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react"
-import ProductItem from "./product-item"
+import ProductList from "./product-list"
 
 export type ProductsType =
   paths["/products"]["get"]["responses"][200]["content"]["application/json"]
@@ -12,7 +12,7 @@ interface ProductsTypeProps {
 export default function ProductFeatured({ products }: ProductsTypeProps) {
   return (
     <div className="mx-15 my-10">
-      <div className="mb-3 flex justify-between">
+      <div className="mb-5 flex justify-between">
         <h3 className="text-2xl font-semibold">Featured Products</h3>
         <div className="flex items-center justify-center space-x-2">
           <div className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-accent-foreground">
@@ -23,11 +23,8 @@ export default function ProductFeatured({ products }: ProductsTypeProps) {
           </div>
         </div>
       </div>
-      <ul className="grid grid-cols-5 gap-5">
-        {products.map((product) => (
-          <ProductItem product={product} />
-        ))}
-      </ul>
+
+      <ProductList products={products} />
     </div>
   )
 }

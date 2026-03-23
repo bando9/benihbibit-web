@@ -1,6 +1,12 @@
 import { formattedCurrency } from "@/utils/common"
-import { RiShoppingBasketLine } from "@remixicon/react"
 import type { ProductsType } from "./product-featured"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 type ProductType = ProductsType[number]
 
@@ -10,24 +16,24 @@ interface ProductTypeProps {
 
 function ProductItem({ product }: ProductTypeProps) {
   return (
-    <div>
-      <li key={product.id}>
-        <div className="overflow-hidden rounded-xl bg-primary">
-          <img src={product.imageUrl} alt={product.name} />
-          <div className="flex h-20 items-center justify-between p-3">
-            <div className="text-sm text-accent">
-              <p>{product.name}</p>
-              <p className="text-base font-bold">
-                {formattedCurrency(product.price)}
-              </p>
-            </div>
-            <div className="cursor-pointer rounded-full bg-accent p-1 hover:bg-chart-1">
-              <RiShoppingBasketLine />
-            </div>
-          </div>
-        </div>
-      </li>
-    </div>
+    <li key={product.id}>
+      <Card className="w-full max-w-sm">
+        <CardContent>
+          <img
+            src={product.imageUrl}
+            className="rounded-xl"
+            alt={product.name}
+          />
+          <CardTitle className="mt-2"> {product.name} </CardTitle>
+          <CardDescription>
+            <p>{formattedCurrency(product.price)}</p>
+          </CardDescription>
+          <Button type="submit" className="mt-3 w-full cursor-pointer">
+            Buy Now
+          </Button>
+        </CardContent>
+      </Card>
+    </li>
   )
 }
 
