@@ -11,7 +11,7 @@ interface ProductsTypeProps {
 
 export default function ProductFeatured({ products }: ProductsTypeProps) {
   return (
-    <div className="mx-15 my-10">
+    <div className="m-15">
       <div className="mb-5 flex justify-between">
         <h3 className="text-2xl font-semibold">Featured Products</h3>
         <div className="flex items-center justify-center space-x-2">

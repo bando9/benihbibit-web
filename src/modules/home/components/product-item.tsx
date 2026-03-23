@@ -16,7 +16,7 @@ interface ProductTypeProps {
 
 function ProductItem({ product }: ProductTypeProps) {
   return (
-    <li key={product.id}>
+    <li>
       <Card className="w-full max-w-sm">
         <CardContent>
           <img

@@ -4,7 +4,7 @@ import { Outlet } from "react-router"
 
 function MainLayout() {
   return (
-    <div className="flex min-h-screen flex-col justify-between space-y-28">
+    <div className="flex min-h-screen flex-col justify-between">
       <Navbar />
       <Outlet />
 
