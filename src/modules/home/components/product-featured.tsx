@@ -7,9 +7,13 @@ export type ProductsType =
 
 interface ProductsTypeProps {
   products: ProductsType
+  handleNextPage: () => void
 }
 
-export default function ProductFeatured({ products }: ProductsTypeProps) {
+export default function ProductFeatured({
+  products,
+  handleNextPage,
+}: ProductsTypeProps) {
   return (
     <div className="m-15">
       <div className="mb-5 flex justify-between">
@@ -18,9 +22,12 @@ export default function ProductFeatured({ products }: ProductsTypeProps) {
           <div className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-accent-foreground">
             <RiArrowLeftLine />
           </div>
-          <div className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-primary bg-primary text-white">
+          <button
+            className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-primary bg-primary text-white"
+            onClick={handleNextPage}
+          >
             <RiArrowRightLine />
-          </div>
+          </button>
         </div>
       </div>
 

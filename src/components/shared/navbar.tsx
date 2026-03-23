@@ -12,7 +12,7 @@ function Navbar() {
       <a href="/">
         <img src={Logo} alt="" />
       </a>
-      <ul className="flex items-center justify-center space-x-5">
+      <ul className="flex items-center justify-center space-x-5 text-lg">
         <li>
           <a href="/">Home</a>
         </li>
