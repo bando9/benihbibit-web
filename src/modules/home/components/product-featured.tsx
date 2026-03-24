@@ -8,20 +8,25 @@ export type ProductsType =
 interface ProductsTypeProps {
   products: ProductsType
   handleNextPage: () => void
+  handlePrevPage: () => void
 }
 
 export default function ProductFeatured({
   products,
   handleNextPage,
+  handlePrevPage,
 }: ProductsTypeProps) {
   return (
     <div className="m-15">
       <div className="mb-5 flex justify-between">
         <h3 className="text-2xl font-semibold">Featured Products</h3>
         <div className="flex items-center justify-center space-x-2">
-          <div className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-accent-foreground">
+          <button
+            className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-accent-foreground"
+            onClick={handlePrevPage}
+          >
             <RiArrowLeftLine />
-          </div>
+          </button>
           <button
             className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-primary bg-primary text-white"
             onClick={handleNextPage}

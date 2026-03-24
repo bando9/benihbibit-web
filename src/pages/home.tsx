@@ -2,12 +2,11 @@ import FeatureServices from "@/modules/home/components/feature-services"
 import { HomeCarousel } from "@/modules/home/components/home-carousel"
 import ProductFeatured from "@/modules/home/components/product-featured"
 import { $api } from "@/modules/products/api"
-
-function handleNextPage() {
-  return console.log("button next page")
-}
+import { useState } from "react"
 
 export function Home() {
+  const [page, setPage] = useState(1)
+
   const {
     data: products,
     error,
@@ -15,7 +14,7 @@ export function Home() {
   } = $api.useQuery("get", `/products`, {
     params: {
       query: {
-        page: 3,
+        page: page,
         pageSize: 8,
       },
     },
@@ -29,11 +28,30 @@ export function Home() {
     return <span>Error: {error}</span>
   }
 
+  function handleNextPage() {
+    return setPage((prevCount) => {
+      if (prevCount >= 4) return 1
+
+      return prevCount + 1
+    })
+  }
+
+  function handlePrevPage() {
+    setPage((prevCount) => {
+      if (prevCount <= 0 || prevCount >= 4) return 1
+      return prevCount - 1
+    })
+  }
+
   return (
     <div className="space-y-28">
       <HomeCarousel />
 
-      <ProductFeatured products={products} handleNextPage={handleNextPage} />
+      <ProductFeatured
+        products={products}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+      />
 
       <FeatureServices />
     </div>
