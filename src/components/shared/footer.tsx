@@ -1,4 +1,4 @@
-import Logo from "@/assets/logo.png"
+import Logo from "/public/logo-icon.svg"
 import {
   RiFacebookCircleLine,
   RiInstagramLine,
@@ -8,12 +8,15 @@ import {
 
 export default function Footer() {
   return (
-    <div className="static bottom-0 mt-15 flex flex-col items-center justify-center bg-accent pt-5 pb-2">
+    <div className="static bottom-0 flex flex-col items-center justify-center bg-[#15281f] pt-15 pb-2">
       <div className="flex flex-col items-center">
-        <div>
-          <img src={Logo} alt="logo benihbunbun" className="rounded-2xl" />
+        <div className="mb-5 flex items-center justify-center space-x-1">
+          <img src={Logo} alt="logo benihbunbun" className="w-10" />
+          <h3 className="text-base font-semibold text-accent uppercase">
+            benihbunbun
+          </h3>
         </div>
-        <ul className="mt-3 flex space-x-10">
+        <ul className="mt-3 flex space-x-10 text-accent">
           <li>
             <a href="/">Home</a>
           </li>
@@ -28,7 +31,7 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      <div className="mt-5 flex space-x-10 pb-10">
+      <div className="mt-5 flex space-x-10 pb-10 text-accent">
         <a href="https://www.instagram.com/benihbunbun" target="blank">
           <RiInstagramLine />
         </a>
@@ -44,6 +47,11 @@ export default function Footer() {
         >
           <RiTiktokLine />
         </a>
+      </div>
+      <div className="w-full border-t border-gray-500">
+        <h3 className="py-1.5 text-center text-lg text-gray-500">
+          © Benihbibit. All Right Reserved.
+        </h3>
       </div>
     </div>
   )
