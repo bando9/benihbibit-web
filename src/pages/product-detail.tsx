@@ -18,14 +18,14 @@ import {
   RiTruckLine,
 } from "@remixicon/react"
 import { useState } from "react"
-import { useParams } from "react-router"
+import { Link, useParams } from "react-router"
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1)
 
-  const { slug } = useParams()
+  const { slug } = useParams<{ slug: string }>()
 
-  if (!slug) return console.log("slug not found")
+  if (!slug) return null
 
   const {
     data: product,
@@ -188,9 +188,9 @@ const ProductDetail = () => {
           </h2>
           <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {products?.map((product) => (
-              <a
+              <Link
                 key={product.name}
-                href={`/product/${product.slug}`}
+                to={`/product/${product.slug}`}
                 className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm transition-all duration-300 hover:shadow-xl"
               >
                 <div className="overflow-hidden">
@@ -214,7 +214,7 @@ const ProductDetail = () => {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>

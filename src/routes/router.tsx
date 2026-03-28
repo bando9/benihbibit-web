@@ -16,11 +16,14 @@ export const router = createBrowserRouter([
       { path: "about", Component: About },
       { path: "contact", Component: Contact },
       { path: "shop", Component: Shop },
-      { path: "product/:slug", Component: ProductDetail },
+      { path: "cart", Component: Cart },
+      {
+        path: "product/:slug",
+        loader: async ({ params }) => {
+          return { slug: params.slug }
+        },
+        Component: ProductDetail,
+      },
     ],
-  },
-  {
-    path: "/cart",
-    element: <Cart />,
   },
 ])

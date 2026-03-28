@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card"
+import { Link } from "react-router"
 
 type ProductType = ProductsType[number]
 
@@ -16,7 +17,7 @@ interface ProductTypeProps {
 function ProductItem({ product }: ProductTypeProps) {
   return (
     <li>
-      <a href={`/product/${product.slug}`}>
+      <Link to={`/product/${product.slug}`}>
         <Card className="w-full max-w-sm transform cursor-pointer duration-200 hover:scale-105 hover:shadow-md">
           <CardContent>
             <img
@@ -30,7 +31,7 @@ function ProductItem({ product }: ProductTypeProps) {
             </CardDescription>
           </CardContent>
         </Card>
-      </a>
+      </Link>
     </li>
   )
 }
