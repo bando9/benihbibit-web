@@ -6,7 +6,6 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 
 type ProductType = ProductsType[number]
 
@@ -17,22 +16,21 @@ interface ProductTypeProps {
 function ProductItem({ product }: ProductTypeProps) {
   return (
     <li>
-      <Card className="w-full max-w-sm">
-        <CardContent>
-          <img
-            src={product.imageUrl}
-            className="rounded-xl"
-            alt={product.name}
-          />
-          <CardTitle className="mt-2"> {product.name} </CardTitle>
-          <CardDescription>
-            <p>{formattedCurrency(product.price)}</p>
-          </CardDescription>
-          <Button type="submit" className="mt-3 w-full cursor-pointer">
-            Buy Now
-          </Button>
-        </CardContent>
-      </Card>
+      <a href={`/product/${product.slug}`}>
+        <Card className="w-full max-w-sm transform cursor-pointer duration-200 hover:scale-105 hover:shadow-md">
+          <CardContent>
+            <img
+              src={product.imageUrl}
+              className="rounded-xl"
+              alt={product.name}
+            />
+            <CardTitle className="mt-2"> {product.name} </CardTitle>
+            <CardDescription>
+              <p>{formattedCurrency(product.price)}</p>
+            </CardDescription>
+          </CardContent>
+        </Card>
+      </a>
     </li>
   )
 }
