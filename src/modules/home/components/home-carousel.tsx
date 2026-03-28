@@ -37,7 +37,7 @@ const slideList = [
 
 export function HomeCarousel() {
   return (
-    <div className="mx-auto flex justify-center">
+    <div className="mx-auto flex justify-center bg-[#eef6f1] py-10">
       <Carousel
         className="w-full max-w-100 sm:max-w-125 md:max-w-230"
         plugins={[

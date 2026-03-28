@@ -37,7 +37,7 @@ const services = [
 
 function FeatureServices() {
   return (
-    <div className="mx-15">
+    <div className="bg-[#f7f4ed] px-15 py-10">
       <div>
         <h3 className="text-sm">Why Choose Us</h3>
         <h3 className="text-2xl font-semibold">Growing Made Simple</h3>
@@ -49,7 +49,7 @@ function FeatureServices() {
               key={service.id}
               className="flex flex-col items-center space-y-4 text-center"
             >
-              <div className="rounded-2xl bg-accent p-4 text-primary">
+              <div className="rounded-2xl bg-[#e2e5dc] p-4 text-primary">
                 <service.icon size={28} />
               </div>
               <div className="space-y-2">

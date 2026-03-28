@@ -6,6 +6,7 @@ import { useState } from "react"
 
 export function Home() {
   const [page, setPage] = useState(1)
+  const pageSize = 8
 
   const {
     data: products,
@@ -15,7 +16,7 @@ export function Home() {
     params: {
       query: {
         page: page,
-        pageSize: 8,
+        pageSize: pageSize,
       },
     },
   })
