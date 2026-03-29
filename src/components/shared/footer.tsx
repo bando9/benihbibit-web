@@ -48,8 +48,8 @@ export default function Footer() {
           <RiTiktokLine />
         </a>
       </div>
-      <div className="w-full border-t border-gray-500">
-        <h3 className="py-1.5 text-center text-lg text-gray-500">
+      <div className="w-full border-t border-gray-400">
+        <h3 className="py-1.5 text-center text-sm text-gray-400">
           © Benihbibit. All Right Reserved.
         </h3>
       </div>
