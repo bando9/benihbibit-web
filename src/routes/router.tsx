@@ -1,10 +1,13 @@
+import AuthLayout from "@/layouts/auth-layout"
 import MainLayout from "@/layouts/main-layout"
 import About from "@/pages/about"
 import Cart from "@/pages/cart"
 import Contact from "@/pages/contact"
 import { Home } from "@/pages/home"
+import Login from "@/pages/login"
 import NotFound from "@/pages/not-found"
 import ProductDetail from "@/pages/product-detail"
+import Register from "@/pages/register"
 import Shop from "@/pages/shop"
 import { createBrowserRouter } from "react-router"
 
@@ -26,6 +29,13 @@ export const router = createBrowserRouter([
         },
         Component: ProductDetail,
       },
+    ],
+  },
+  {
+    Component: AuthLayout,
+    children: [
+      { path: "login", Component: Login },
+      { path: "register", Component: Register },
     ],
   },
 ])
