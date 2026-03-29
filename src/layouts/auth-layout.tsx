@@ -2,7 +2,7 @@ import { Outlet } from "react-router"
 
 function AuthLayout() {
   return (
-    <div className="grid grid-cols-2 gap-1 overflow-hidden px-30 pt-10 pb-10 text-center">
+    <div className="grid grid-cols-2 gap-1 overflow-hidden px-30 pt-5 text-center">
       <Outlet />
       <img
         src="https://27hpovti1s.ucarecd.net/67925315-8bd7-40ec-981f-4f82718a44ec/mimipicphotographyXmR3y0bp3Kwunsplash1.jpg"
