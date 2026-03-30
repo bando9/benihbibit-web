@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/card"
 import { Link } from "react-router"
 
-type ProductType = ProductsType[number]
+export type ProductType = ProductsType[number]
 
-interface ProductTypeProps {
+export interface ProductTypeProps {
   product: ProductType
 }
 
