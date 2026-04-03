@@ -1,56 +1,87 @@
-import {
-  RiSearchLine,
-  RiShoppingCartFill,
-  RiShoppingCartLine,
-  RiUserLine,
-} from "@remixicon/react"
+import { RiSearchLine, RiShoppingCartFill, RiUserLine } from "@remixicon/react"
+import { Link } from "react-router"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "../ui/input-group"
+import { Button } from "@/components/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
 function Navbar() {
   const isCartFilled = true
+  const isLogin = true
+
   return (
-    <div className="flex items-center justify-evenly bg-[#eef6f1] py-4">
-      <a className="flex items-center space-x-1">
+    <div className="sticky top-0 z-50 flex w-full items-center justify-evenly bg-[#eef6f1] py-4 shadow-md">
+      <Link to="/" className="flex items-center space-x-1">
         <img src="logo-icon.svg" alt="logo benihbunbun" className="w-9" />
         <h3 className="text-sm font-semibold text-primary uppercase">
           benihbunbun
         </h3>
-      </a>
+      </Link>
 
-      <ul className="flex items-center justify-center space-x-5 text-lg text-[#15281f]">
+      <ul className="hidden items-center justify-center space-x-5 text-base text-[#15281f] md:flex">
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/shop">Shop</a>
+          <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <a href="/about">About us</a>
+          <Link to="/about">About us</Link>
         </li>
         <li>
-          <a href="/contact">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
 
-      <div className="flex items-center justify-center space-x-5 text-[#15281f]">
-        <div className="flex w-full cursor-pointer justify-center rounded-3xl p-1.5 text-center">
-          <RiSearchLine size={24} />
+      <div className="items-center justify-center space-x-5 text-[#15281f] md:flex">
+        <div className="w-full cursor-pointer rounded-3xl p-1.5 text-center">
+          <InputGroup>
+            <InputGroupInput placeholder="Search..." />
+            <InputGroupAddon>
+              <RiSearchLine />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
-        <a
-          href="#"
-          className="flex w-full cursor-pointer justify-center rounded-3xl p-1.5 text-center"
-        >
-          <RiUserLine size={24} />
-        </a>
-        <a
-          href="/cart"
-          className="flex w-full cursor-pointer justify-center rounded-3xl p-1.5 text-center"
-        >
-          {isCartFilled ? (
-            <RiShoppingCartFill size={24} />
+
+        <div className="flex items-center gap-2">
+          {isLogin ? (
+            <>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="cursor-pointer">
+                    <RiUserLine />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align="center" className="w-40">
+                  <Button variant="ghost" className="cursor-pointer">
+                    Logout
+                  </Button>
+                </PopoverContent>
+              </Popover>
+            </>
           ) : (
-            <RiShoppingCartLine size={24} />
+            <Link to="/login">
+              <Button variant="outline" className="cursor-pointer">
+                <RiUserLine />
+              </Button>
+            </Link>
           )}
-        </a>
+
+          <Link to="/cart">
+            {isCartFilled ? (
+              <Link to="/cart">
+                <Button variant="outline" className="cursor-pointer">
+                  <RiShoppingCartFill />
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/cart">
+                <Button variant="outline" className="cursor-pointer">
+                  <RiShoppingCartFill size={24} />
+                </Button>
+              </Link>
+            )}
+          </Link>
+        </div>
       </div>
     </div>
   )
