@@ -1,4 +1,3 @@
-import Logo from "/public/logo-icon.svg"
 import {
   RiFacebookCircleLine,
   RiInstagramLine,
@@ -11,7 +10,7 @@ export default function Footer() {
     <div className="static bottom-0 flex flex-col items-center justify-center bg-[#15281f] pt-15 pb-2">
       <div className="flex flex-col items-center">
         <div className="mb-5 flex items-center justify-center space-x-1">
-          <img src={Logo} alt="logo benihbunbun" className="w-10" />
+          <img src="/logo-icon.svg" alt="logo benihbunbun" className="w-10" />
           <h3 className="text-base font-semibold text-accent uppercase">
             benihbunbun
           </h3>

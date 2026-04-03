@@ -1,5 +1,3 @@
-import Logo from "/public/logo-icon.svg"
-
 import {
   RiSearchLine,
   RiShoppingCartFill,
@@ -10,10 +8,10 @@ import {
 function Navbar() {
   const isCartFilled = true
   return (
-    <div className="navbar flex items-center justify-evenly bg-[#eef6f1] pt-3">
-      <a className="mb-5 flex items-center justify-center space-x-1">
-        <img src={Logo} alt="logo benihbunbun" className="w-10" />
-        <h3 className="text-base font-semibold text-primary uppercase">
+    <div className="flex items-center justify-evenly bg-[#eef6f1] py-4">
+      <a className="flex items-center space-x-1">
+        <img src="logo-icon.svg" alt="logo benihbunbun" className="w-9" />
+        <h3 className="text-sm font-semibold text-primary uppercase">
           benihbunbun
         </h3>
       </a>
