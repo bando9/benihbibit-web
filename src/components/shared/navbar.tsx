@@ -60,24 +60,18 @@ function Navbar() {
             </>
           ) : (
             <Link to="/login">
-              <Button variant="outline" className="cursor-pointer">
-                <RiUserLine />
-              </Button>
+              <RiUserLine />
             </Link>
           )}
 
           <Link to="/cart">
             {isCartFilled ? (
-              <Link to="/cart">
-                <Button variant="outline" className="cursor-pointer">
-                  <RiShoppingCartFill />
-                </Button>
+              <Link to="/cart" className="cursor-pointer">
+                <RiShoppingCartFill />
               </Link>
             ) : (
-              <Link to="/cart">
-                <Button variant="outline" className="cursor-pointer">
-                  <RiShoppingCartFill size={24} />
-                </Button>
+              <Link to="/cart" className="cursor-pointer">
+                <RiShoppingCartFill size={24} />
               </Link>
             )}
           </Link>

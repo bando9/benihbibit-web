@@ -1,17 +1,22 @@
 import ProductCard from "@/components/shared/product-card"
-import type { ProductsType } from "./product-featured"
+import type { ProductsType } from "@/pages/home/components/product-featured"
 
 interface ProductsTypeProps {
   products: ProductsType
+  showAddToCart?: boolean
 }
 
-function ProductList({ products }: ProductsTypeProps) {
+function ProductList({ products, showAddToCart }: ProductsTypeProps) {
   return (
-    <ul className="grid grid-cols-4 gap-7">
+    <>
       {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
+        <ProductCard
+          product={product}
+          key={product.id}
+          showAddToCart={showAddToCart}
+        />
       ))}
-    </ul>
+    </>
   )
 }
 
