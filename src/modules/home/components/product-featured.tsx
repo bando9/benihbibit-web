@@ -1,42 +1,28 @@
 import type { paths } from "@/modules/products/schema/schema"
-import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react"
 import ProductList from "./product-list"
+import { Link } from "react-router"
+import { Button } from "@/components/ui/button"
 
 export type ProductsType =
   paths["/products"]["get"]["responses"][200]["content"]["application/json"]
 
 interface ProductsTypeProps {
   products: ProductsType
-  handleNextPage: () => void
-  handlePrevPage: () => void
 }
 
-export default function ProductFeatured({
-  products,
-  handleNextPage,
-  handlePrevPage,
-}: ProductsTypeProps) {
+export default function ProductFeatured({ products }: ProductsTypeProps) {
   return (
-    <div className="m-15">
+    <div className="mx-15">
       <div className="mb-5 flex justify-between">
         <h3 className="text-2xl font-semibold">Featured Products</h3>
-        <div className="flex items-center justify-center space-x-2">
-          <button
-            className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-accent-foreground"
-            onClick={handlePrevPage}
-          >
-            <RiArrowLeftLine />
-          </button>
-          <button
-            className="flex h-8 cursor-pointer items-center rounded-sm border-2 border-primary bg-primary text-white"
-            onClick={handleNextPage}
-          >
-            <RiArrowRightLine />
-          </button>
-        </div>
       </div>
 
       <ProductList products={products} />
+      <div className="mt-7 w-full text-center">
+        <Link to="/shop">
+          <Button className="w-3/4 cursor-pointer">View all products</Button>
+        </Link>
+      </div>
     </div>
   )
 }

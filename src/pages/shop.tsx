@@ -224,7 +224,7 @@ function Shop() {
               {products?.length > 0 ? (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                   {products?.map((product) => (
-                    <ProductCard product={product} />
+                    <ProductCard product={product} showAddToCart={true} />
                   ))}
                 </div>
               ) : (

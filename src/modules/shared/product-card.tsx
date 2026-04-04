@@ -1,9 +1,14 @@
-import type { ProductTypeProps } from "@/modules/home/components/product-item"
+import type { ProductType } from "@/modules/home/components/product-item"
 import { formattedCurrency } from "@/utils/common"
 import { RiShoppingCartLine } from "@remixicon/react"
 import { Link } from "react-router"
 
-function ProductCard({ product }: ProductTypeProps) {
+interface ProductCardTypeProps {
+  product: ProductType
+  showAddToCart?: boolean
+}
+
+function ProductCard({ product, showAddToCart }: ProductCardTypeProps) {
   return (
     <Link
       key={product.id}
@@ -34,12 +39,14 @@ function ProductCard({ product }: ProductTypeProps) {
           <span className="text-base font-bold text-primary tabular-nums">
             {formattedCurrency(product.price)}
           </span>
-          <span
-            className="flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-all hover:shadow-md active:scale-95"
-            onClick={(e) => e.preventDefault()}
-          >
-            <RiShoppingCartLine size={13} /> Add
-          </span>
+          {showAddToCart && (
+            <span
+              className="flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-all hover:shadow-md active:scale-95"
+              onClick={(e) => e.preventDefault()}
+            >
+              <RiShoppingCartLine size={13} /> Add
+            </span>
+          )}
         </div>
       </div>
     </Link>
