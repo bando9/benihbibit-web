@@ -18,7 +18,9 @@ export default function ProductFeatured({ products }: ProductsTypeProps) {
         <h3 className="text-2xl font-semibold">Featured Products</h3>
       </div>
 
-      <ProductList products={products} />
+      <div className="grid grid-cols-4 gap-7">
+        <ProductList products={products} />
+      </div>
 
       <div className="mt-7 w-full text-center">
         <Link to="/shop">
