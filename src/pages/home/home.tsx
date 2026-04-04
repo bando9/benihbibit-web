@@ -1,7 +1,7 @@
-import FeatureServices from "@/modules/home/components/feature-services"
-import { HomeCarousel } from "@/modules/home/components/home-carousel"
-import ProductFeatured from "@/modules/home/components/product-featured"
 import { $api } from "@/modules/products/api"
+import { HomeCarousel } from "./components/home-carousel"
+import ProductFeatured from "./components/product-featured"
+import FeatureServices from "./components/feature-services"
 
 export function Home() {
   const {

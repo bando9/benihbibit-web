@@ -1,7 +1,8 @@
 import type { paths } from "@/modules/products/schema/schema"
-import ProductList from "./product-list"
 import { Link } from "react-router"
+
 import { Button } from "@/components/ui/button"
+import ProductList from "@/components/shared/product-list"
 
 export type ProductsType =
   paths["/products"]["get"]["responses"][200]["content"]["application/json"]
@@ -18,6 +19,7 @@ export default function ProductFeatured({ products }: ProductsTypeProps) {
       </div>
 
       <ProductList products={products} />
+
       <div className="mt-7 w-full text-center">
         <Link to="/shop">
           <Button className="w-3/4 cursor-pointer">View all products</Button>

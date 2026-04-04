@@ -13,7 +13,7 @@ import {
 import type { paths } from "@/modules/products/schema/schema"
 import { useState } from "react"
 import ProductEmpty from "@/modules/products/components/product-empty"
-import ProductCard from "@/modules/shared/product-card"
+import ProductCard from "@/components/shared/product-card"
 
 export type ProductQueryParamsType =
   paths["/products"]["get"]["parameters"]["query"]

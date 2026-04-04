@@ -1,4 +1,4 @@
-import ProductCard from "@/modules/shared/product-card"
+import ProductCard from "@/components/shared/product-card"
 import type { ProductsType } from "./product-featured"
 
 interface ProductsTypeProps {
