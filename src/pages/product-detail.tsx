@@ -19,6 +19,7 @@ import {
 } from "@remixicon/react"
 import { useState } from "react"
 import { Link, useParams } from "react-router"
+import { Input } from "@/components/ui/input"
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1)
@@ -52,6 +53,20 @@ const ProductDetail = () => {
 
   if (error) {
     return <span>Error: {error}</span>
+  }
+
+  const maxQuantity = product?.stockQuantity
+
+  function subQuantity() {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+
+  function addQuantity() {
+    if (quantity < maxQuantity) {
+      setQuantity(quantity + 1)
+    }
   }
 
   return (
@@ -141,20 +156,21 @@ const ProductDetail = () => {
               ))}
             </div>
 
-            <div className="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center">
+            <div className="mb-5 flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center">
               <div className="flex items-center overflow-hidden rounded-full border border-border">
                 <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  onClick={subQuantity}
                   className="cursor-pointer px-4 py-2.5 transition-colors hover:bg-secondary active:scale-95"
                 >
                   <RiSubtractLine size={16} />
                 </button>
-                <span className="w-12 text-center font-semibold text-foreground tabular-nums">
-                  {quantity}
-                </span>
+                <Input
+                  className="w-12 border-0 text-center font-semibold text-foreground tabular-nums focus-visible:ring-0 focus-visible:ring-offset-0"
+                  value={quantity}
+                />
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="cursor-pointer px-4 py-2.5 transition-colors hover:bg-secondary active:scale-95"
+                  onClick={addQuantity}
+                  className={`cursor-pointer px-4 py-2.5 transition-colors hover:bg-secondary active:scale-95`}
                 >
                   <RiAddLine size={16} />
                 </button>
@@ -174,7 +190,7 @@ const ProductDetail = () => {
             </div>
 
             <div>
-              <h2 className="text-lg font-bold">Description</h2>
+              <h2 className="text-2xl font-bold">Description</h2>
               <p className="leading-relaxed text-muted-foreground">
                 {product.description}
               </p>

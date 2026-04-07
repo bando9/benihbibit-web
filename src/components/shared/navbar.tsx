@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div className="sticky top-0 z-50 flex w-full items-center justify-evenly bg-[#eef6f1] py-4 shadow-md">
       <Link to="/" className="flex items-center space-x-1">
-        <img src="logo-icon.svg" alt="logo benihbunbun" className="w-9" />
+        <img src="/logo-icon.svg" alt="logo benihbunbun" className="w-9" />
         <h3 className="text-sm font-semibold text-primary uppercase">
           benihbunbun
         </h3>

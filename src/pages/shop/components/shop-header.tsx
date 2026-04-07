@@ -1,7 +1,7 @@
 function ShopHeader() {
   return (
     <section className="bg-[#eef6f1] py-12 md:py-16">
-      <div className="container text-center">
+      <div className="container mx-auto text-center">
         <h1 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
           Shop Plants & Seeds 🌿
         </h1>
