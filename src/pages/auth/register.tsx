@@ -5,6 +5,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
+import { $api } from "@/modules/products/api"
 import {
   RiEye2Line,
   RiEyeCloseLine,
@@ -12,10 +13,20 @@ import {
   RiMailLine,
   RiUserLine,
 } from "@remixicon/react"
+import { useState } from "react"
 import { Link } from "react-router"
 
 function Register() {
-  const isOpenPassword = false
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const { mutate } = $api.useMutation("post", "/auth/register")
+
+  function handleShowPassword() {
+    setShowPassword(!showPassword)
+  }
+  function handleShowConfirmPassword() {
+    setShowConfirmPassword(!showConfirmPassword)
+  }
 
   return (
     <div className="flex w-full flex-col justify-between rounded-xl bg-accent px-15 py-5">
@@ -69,7 +80,7 @@ function Register() {
                   <InputGroup>
                     <InputGroupInput
                       id="password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Min. 8 strong characters"
                     />
                     <InputGroupAddon>
@@ -79,7 +90,11 @@ function Register() {
                       align="inline-end"
                       className="cursor-pointer"
                     >
-                      {isOpenPassword ? <RiEye2Line /> : <RiEyeCloseLine />}
+                      {showPassword ? (
+                        <RiEye2Line onClick={handleShowPassword} />
+                      ) : (
+                        <RiEyeCloseLine onClick={handleShowPassword} />
+                      )}
                     </InputGroupAddon>
                   </InputGroup>
                 </Field>
@@ -91,7 +106,7 @@ function Register() {
                   <InputGroup>
                     <InputGroupInput
                       id="confirm-password"
-                      type="password"
+                      type={showConfirmPassword ? "text" : "password"}
                       placeholder="Repeat your password"
                     />
                     <InputGroupAddon>
@@ -101,14 +116,31 @@ function Register() {
                       align="inline-end"
                       className="cursor-pointer"
                     >
-                      {isOpenPassword ? <RiEye2Line /> : <RiEyeCloseLine />}
+                      {showConfirmPassword ? (
+                        <RiEye2Line onClick={handleShowConfirmPassword} />
+                      ) : (
+                        <RiEyeCloseLine onClick={handleShowConfirmPassword} />
+                      )}
                     </InputGroupAddon>
                   </InputGroup>
                 </Field>
               </FieldGroup>
             </FieldSet>
             <Field>
-              <Button type="submit" className="w-full cursor-pointer">
+              <Button
+                type="submit"
+                onClick={() =>
+                  mutate({
+                    body: {
+                      name: "bando",
+                      username: "bando12",
+                      email: "bandomega123@gmail.com",
+                      password: "bandobandobando",
+                    },
+                  })
+                }
+                className="w-full cursor-pointer"
+              >
                 Register
               </Button>
             </Field>
