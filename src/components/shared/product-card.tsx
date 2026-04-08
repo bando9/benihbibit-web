@@ -1,11 +1,18 @@
-import type { ProductType } from "@/modules/home/components/product-item"
+import type { ProductsType } from "@/pages/home/components/product-featured"
 import { formattedCurrency } from "@/utils/common"
 import { RiShoppingCartLine } from "@remixicon/react"
 import { Link } from "react-router"
 
+export type ProductType = ProductsType[number]
+
 interface ProductCardTypeProps {
   product: ProductType
   showAddToCart?: boolean
+}
+
+function handleAddToCart(e: React.MouseEvent<HTMLButtonElement>) {
+  e.preventDefault()
+  console.log("tes")
 }
 
 function ProductCard({ product, showAddToCart }: ProductCardTypeProps) {
@@ -42,7 +49,7 @@ function ProductCard({ product, showAddToCart }: ProductCardTypeProps) {
           {showAddToCart && (
             <span
               className="flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-all hover:shadow-md active:scale-95"
-              onClick={(e) => e.preventDefault()}
+              onClick={handleAddToCart}
             >
               <RiShoppingCartLine size={13} /> Add
             </span>

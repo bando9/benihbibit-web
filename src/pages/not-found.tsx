@@ -1,6 +1,7 @@
 import Footer from "@/components/shared/footer"
 import Navbar from "@/components/shared/navbar"
 import NotFoundImage from "@/assets/not-found.gif"
+import { Link } from "react-router"
 
 function NotFound() {
   return (
@@ -10,9 +11,9 @@ function NotFound() {
       <div className="flex flex-col items-center bg-[#999] px-15 pt-5 pb-10">
         <img src={NotFoundImage} alt="not found" className="w-1/2" />
         <h3 className="text-accent">We can't find page you are looking for</h3>
-        <a href="/" className="text-accent underline hover:text-[#fbe5b5]">
+        <Link to="/" className="text-accent underline hover:text-[#fbe5b5]">
           Return to Home
-        </a>
+        </Link>
       </div>
 
       <Footer />

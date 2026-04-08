@@ -4,6 +4,7 @@ import {
   RiTelegram2Line,
   RiTiktokLine,
 } from "@remixicon/react"
+import { Link } from "react-router"
 
 export default function Footer() {
   return (
@@ -17,35 +18,35 @@ export default function Footer() {
         </div>
         <ul className="mt-3 flex space-x-10 text-accent">
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/shop">Shop</a>
+            <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <a href="/about">About us</a>
+            <Link to="/about">About us</Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
       <div className="mt-5 flex space-x-10 pb-10 text-accent">
-        <a href="https://www.instagram.com/benihbunbun" target="blank">
+        <Link to="https://www.instagram.com/benihbunbun" target="blank">
           <RiInstagramLine />
-        </a>
-        <a href="https://www.facebook.com/benihbunbun/" target="blank">
+        </Link>
+        <Link to="https://www.facebook.com/benihbunbun/" target="blank">
           <RiFacebookCircleLine />
-        </a>
-        <a href="https://t.me/ceritaberkebun" target="blank">
+        </Link>
+        <Link to="https://t.me/ceritaberkebun" target="blank">
           <RiTelegram2Line />
-        </a>
-        <a
-          href="https://www.tiktok.com/@souveniredukasimenanam?is_from_webapp=1&sender_device=pc"
+        </Link>
+        <Link
+          to="https://www.tiktok.com/@souveniredukasimenanam?is_from_webapp=1&sender_device=pc"
           target="blank"
         >
           <RiTiktokLine />
-        </a>
+        </Link>
       </div>
       <div className="w-full border-t border-gray-400">
         <h3 className="py-1.5 text-center text-sm text-gray-400">

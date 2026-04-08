@@ -7,7 +7,7 @@ import Cart from "@/pages/cart/cart"
 import Contact from "@/pages/contact/contact"
 import { Home } from "@/pages/home/home"
 import NotFound from "@/pages/not-found"
-import ProductDetail from "@/pages/product-detail"
+import ProductDetail from "@/pages/product-detail/product-detail"
 import Shop from "@/pages/shop/shop"
 import { createBrowserRouter } from "react-router"
 
