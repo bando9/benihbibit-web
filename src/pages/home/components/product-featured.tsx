@@ -1,11 +1,8 @@
-import type { paths } from "@/modules/products/schema/schema"
 import { Link } from "react-router"
 
 import { Button } from "@/components/ui/button"
 import ProductList from "@/components/shared/product-list"
-
-export type ProductsType =
-  paths["/products"]["get"]["responses"][200]["content"]["application/json"]
+import type { ProductsType } from "@/types"
 
 interface ProductsTypeProps {
   products: ProductsType

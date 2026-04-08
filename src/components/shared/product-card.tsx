@@ -1,9 +1,7 @@
-import type { ProductsType } from "@/pages/home/components/product-featured"
+import type { ProductType } from "@/types"
 import { formattedCurrency } from "@/utils/common"
 import { RiShoppingCartLine } from "@remixicon/react"
 import { Link } from "react-router"
-
-export type ProductType = ProductsType[number]
 
 interface ProductCardTypeProps {
   product: ProductType

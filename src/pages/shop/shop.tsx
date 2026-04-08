@@ -1,4 +1,3 @@
-import type { paths } from "@/modules/products/schema/schema"
 import { useState } from "react"
 import ProductEmpty from "@/modules/products/components/product-empty"
 import { useQuery } from "@tanstack/react-query"
@@ -7,11 +6,7 @@ import ProductList from "@/components/shared/product-list"
 import ShopHeader from "./components/shop-header"
 import ProductToolbar from "./components/product-toolbar"
 import ProductPagination from "./components/product-pagination"
-
-export type ProductQueryParamsType =
-  paths["/products"]["get"]["parameters"]["query"]
-
-export type ProductSortBy = NonNullable<ProductQueryParamsType>["sortBy"]
+import type { ProductSortBy } from "@/types"
 
 function Shop() {
   const [sortBy, setSortBy] = useState<ProductSortBy>("createdAt")
