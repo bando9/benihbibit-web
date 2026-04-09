@@ -14,12 +14,56 @@ import {
   RiUserLine,
 } from "@remixicon/react"
 import { useState } from "react"
-import { Link } from "react-router"
+import { Link, redirect } from "react-router"
+
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+const RequestSchema = z.object({
+  name: z.string(),
+  username: z.string(),
+  email: z.string(),
+  password: z.string(),
+})
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const { mutate } = $api.useMutation("post", "/auth/register")
+  const { mutate, isPending } = $api.useMutation("post", "/auth/register")
+
+  const form = useForm<z.infer<typeof RequestSchema>>({
+    resolver: zodResolver(RequestSchema),
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof RequestSchema>) {
+    mutate(
+      {
+        body: {
+          name: data.name,
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        },
+      },
+      {
+        onSuccess: () => {
+          redirect("/login")
+        },
+        onError: (err) => {
+          if (err) {
+            console.error(err)
+          }
+        },
+      }
+    )
+  }
 
   function handleShowPassword() {
     setShowPassword(!showPassword)
@@ -39,7 +83,7 @@ function Register() {
           </p>
         </div>
 
-        <form className="w-full">
+        <form className="w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <FieldSet className="w-full">
               <FieldGroup>
@@ -47,7 +91,9 @@ function Register() {
                   <FieldLabel htmlFor="name">Full Name</FieldLabel>
                   <InputGroup>
                     <InputGroupInput
+                      {...form.register("name")}
                       id="name"
+                      name="name"
                       type="text"
                       placeholder="e.g. Bando Mega"
                     />
@@ -58,12 +104,30 @@ function Register() {
                 </Field>
 
                 <Field>
-                  <FieldLabel htmlFor="password">
+                  <FieldLabel htmlFor="username">User Name</FieldLabel>
+                  <InputGroup>
+                    <InputGroupInput
+                      {...form.register("username")}
+                      id="username"
+                      name="username"
+                      type="text"
+                      placeholder="e.g. Bando Mega"
+                    />
+                    <InputGroupAddon>
+                      <RiUserLine />
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Field>
+
+                <Field>
+                  <FieldLabel htmlFor="email">
                     Email Addresss <span className="text-destructive">*</span>
                   </FieldLabel>
                   <InputGroup>
                     <InputGroupInput
+                      {...form.register("email")}
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="yourname@email.com"
                     />
@@ -79,7 +143,9 @@ function Register() {
                   </FieldLabel>
                   <InputGroup>
                     <InputGroupInput
+                      {...form.register("password")}
                       id="password"
+                      name="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Min. 8 strong characters"
                     />
@@ -106,6 +172,7 @@ function Register() {
                   <InputGroup>
                     <InputGroupInput
                       id="confirm-password"
+                      name="confirm-password"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Repeat your password"
                     />
@@ -129,19 +196,10 @@ function Register() {
             <Field>
               <Button
                 type="submit"
-                onClick={() =>
-                  mutate({
-                    body: {
-                      name: "bando",
-                      username: "bando12",
-                      email: "bandomega123@gmail.com",
-                      password: "bandobandobando",
-                    },
-                  })
-                }
+                disabled={isPending}
                 className="w-full cursor-pointer"
               >
-                Register
+                {isPending ? "Creating account..." : "Register"}
               </Button>
             </Field>
           </FieldGroup>

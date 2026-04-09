@@ -1,4 +1,9 @@
-import { RiSearchLine, RiShoppingCartFill, RiUserLine } from "@remixicon/react"
+import {
+  RiSearchLine,
+  RiShoppingCartFill,
+  RiShoppingCartLine,
+  RiUserLine,
+} from "@remixicon/react"
 import { Link } from "react-router"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "../ui/input-group"
 import { Button } from "@/components/ui/button"
@@ -43,38 +48,43 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          {isLogin ? (
-            <>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="cursor-pointer">
-                    <RiUserLine />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="cursor-pointer">
+                <RiUserLine />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="center" className="w-40">
+              {isLogin ? (
+                <Button variant="ghost" className="cursor-pointer">
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Button variant="outline" className="cursor-pointer" asChild>
+                    <Link to="/login">Login</Link>
                   </Button>
-                </PopoverTrigger>
-                <PopoverContent align="center" className="w-40">
-                  <Button variant="ghost" className="cursor-pointer">
-                    Logout
+                  <Button variant="outline" className="cursor-pointer" asChild>
+                    <Link to="/register">Register</Link>
                   </Button>
-                </PopoverContent>
-              </Popover>
-            </>
-          ) : (
-            <Link to="/login">
-              <RiUserLine />
-            </Link>
-          )}
+                </>
+              )}
+            </PopoverContent>
+          </Popover>
 
-          <Link to="/cart">
-            {isCartFilled ? (
+          {isCartFilled ? (
+            <Button variant="outline" className="cursor-pointer" asChild>
               <Link to="/cart" className="cursor-pointer">
                 <RiShoppingCartFill />
               </Link>
-            ) : (
+            </Button>
+          ) : (
+            <Button variant="outline" className="cursor-pointer" asChild>
               <Link to="/cart" className="cursor-pointer">
-                <RiShoppingCartFill size={24} />
+                <RiShoppingCartLine />
               </Link>
-            )}
-          </Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
