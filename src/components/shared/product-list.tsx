@@ -1,5 +1,5 @@
 import ProductCard from "@/components/shared/product-card"
-import type { ProductsType } from "@/pages/home/components/product-featured"
+import type { ProductsType } from "@/types"
 
 interface ProductsTypeProps {
   products: ProductsType

@@ -1,6 +1,6 @@
-import type { ProductType } from "@/components/shared/product-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import type { ProductType } from "@/types"
 import { formattedCurrency } from "@/utils/common"
 import {
   RiAddLine,

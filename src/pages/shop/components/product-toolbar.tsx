@@ -1,4 +1,4 @@
-import type { ProductsType } from "@/pages/home/components/product-featured"
+import type { ProductsType } from "@/types"
 
 interface ProductToolbarProps {
   products: ProductsType
