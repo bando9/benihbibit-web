@@ -15,6 +15,7 @@ import { Link } from "react-router"
 
 function Login() {
   const isOpenPassword = false
+
   return (
     <div className="flex w-full flex-col justify-between rounded-xl bg-accent px-15 py-5">
       <div className="flex flex-col space-y-5">

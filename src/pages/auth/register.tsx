@@ -14,26 +14,21 @@ import {
   RiUserLine,
 } from "@remixicon/react"
 import { useState } from "react"
-import { Link, redirect } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-
-const RequestSchema = z.object({
-  name: z.string(),
-  username: z.string(),
-  email: z.string(),
-  password: z.string(),
-})
+import { RequestRegisterSchema } from "@/types"
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { mutate, isPending } = $api.useMutation("post", "/auth/register")
+  const navigate = useNavigate()
 
-  const form = useForm<z.infer<typeof RequestSchema>>({
-    resolver: zodResolver(RequestSchema),
+  const form = useForm<z.infer<typeof RequestRegisterSchema>>({
+    resolver: zodResolver(RequestRegisterSchema),
     defaultValues: {
       name: "",
       username: "",
@@ -42,7 +37,7 @@ function Register() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof RequestSchema>) {
+  function onSubmit(data: z.infer<typeof RequestRegisterSchema>) {
     mutate(
       {
         body: {
@@ -54,7 +49,7 @@ function Register() {
       },
       {
         onSuccess: () => {
-          redirect("/login")
+          navigate("/login?registered=true", { replace: true })
         },
         onError: (err) => {
           if (err) {
