@@ -63,6 +63,7 @@ function Register() {
   function handleShowPassword() {
     setShowPassword(!showPassword)
   }
+
   function handleShowConfirmPassword() {
     setShowConfirmPassword(!showConfirmPassword)
   }

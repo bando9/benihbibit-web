@@ -11,7 +11,7 @@ import FilterPanel from "./components/filter-panel"
 
 function Shop() {
   const [sortBy, setSortBy] = useState<ProductSortBy>("createdAt")
-  const page = 3
+  const page = 1
   const pageSize = 9
 
   const { data, isLoading, error } = useQuery({
