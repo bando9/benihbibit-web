@@ -7,6 +7,7 @@ import ShopHeader from "./components/shop-header"
 import ProductToolbar from "./components/product-toolbar"
 import ProductPagination from "./components/product-pagination"
 import type { ProductSortBy } from "@/types"
+import FilterPanel from "./components/filter-panel"
 
 function Shop() {
   const [sortBy, setSortBy] = useState<ProductSortBy>("createdAt")
@@ -69,7 +70,7 @@ function Shop() {
           <div className="flex gap-8">
             <aside className="hidden w-64 shrink-0 lg:block">
               <div className="sticky top-24 rounded-xl border border-border bg-card p-5">
-                {/* <FilterPanel /> */}
+                <FilterPanel />
               </div>
             </aside>
 
