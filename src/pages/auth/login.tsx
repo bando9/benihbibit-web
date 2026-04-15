@@ -18,9 +18,11 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { useAuth } from "@/modules/auth/hooks"
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false)
+  const { setToken } = useAuth()
   const navigate = useNavigate()
 
   const { mutate, isPending } = $api.useMutation("post", "/auth/login")
@@ -42,7 +44,10 @@ function Login() {
         },
       },
       {
-        onSuccess: () => {
+        onSuccess: (ResponseLogin) => {
+          const token = ResponseLogin.token
+          setToken(token)
+
           navigate("/dashboard")
         },
         onError: (err) => {

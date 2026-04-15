@@ -25,3 +25,7 @@ export const RequestLoginSchema = z.object({
   email: z.string(),
   password: z.string(),
 })
+
+export interface CookieValues {
+  token: string
+}
