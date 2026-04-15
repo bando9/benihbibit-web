@@ -5,6 +5,7 @@ import Login from "@/pages/auth/login"
 import Register from "@/pages/auth/register"
 import Cart from "@/pages/cart/cart"
 import Contact from "@/pages/contact/contact"
+import Dashboard from "@/pages/dashboard"
 import { Home } from "@/pages/home/home"
 import NotFound from "@/pages/not-found"
 import ProductDetail from "@/pages/product-detail/product-detail"
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "contact", Component: Contact },
       { path: "shop", Component: Shop },
       { path: "cart", Component: Cart },
+      { path: "dashboard", Component: Dashboard },
       {
         path: "product/:slug",
         loader: async ({ params }) => {

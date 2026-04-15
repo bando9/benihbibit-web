@@ -8,10 +8,12 @@ import { Link } from "react-router"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "../ui/input-group"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
+import { useUser } from "@/modules/auth/hooks"
 
 function Navbar() {
+  const { isAuthenticated, logout } = useUser()
+
   const isCartFilled = true
-  const isLogin = false
 
   return (
     <div className="sticky top-0 z-50 flex w-full items-center justify-evenly bg-[#eef6f1] py-4 shadow-md">
@@ -55,8 +57,12 @@ function Navbar() {
               </Button>
             </PopoverTrigger>
             <PopoverContent align="center" className="w-40">
-              {isLogin ? (
-                <Button variant="ghost" className="cursor-pointer">
+              {isAuthenticated ? (
+                <Button
+                  variant="ghost"
+                  className="cursor-pointer"
+                  onClick={logout}
+                >
                   Logout
                 </Button>
               ) : (
