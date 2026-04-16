@@ -24,7 +24,7 @@ import { RequestRegisterSchema } from "@/types"
 function Register() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const { mutate, isPending } = $api.useMutation("post", "/auth/register")
+  const { mutate, isPending } = $api.useMutation("post", "/auth/register", {})
   const navigate = useNavigate()
 
   const form = useForm<z.infer<typeof RequestRegisterSchema>>({
@@ -51,9 +51,11 @@ function Register() {
         onSuccess: () => {
           navigate("/login?registered=true", { replace: true })
         },
-        onError: (err) => {
-          if (err) {
-            console.error(err)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onError: (err: any) => {
+          // console.error(err)
+          if (err?.error.code === "P2002") {
+            console.error(err?.message)
           }
         },
       }
