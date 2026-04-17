@@ -23,7 +23,6 @@ import { RequestRegisterSchema } from "@/types"
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { mutate, isPending } = $api.useMutation("post", "/auth/register", {})
   const navigate = useNavigate()
 
@@ -64,10 +63,6 @@ function Register() {
 
   function handleShowPassword() {
     setShowPassword(!showPassword)
-  }
-
-  function handleShowConfirmPassword() {
-    setShowConfirmPassword(!showConfirmPassword)
   }
 
   return (
@@ -158,33 +153,6 @@ function Register() {
                         <RiEye2Line onClick={handleShowPassword} />
                       ) : (
                         <RiEyeCloseLine onClick={handleShowPassword} />
-                      )}
-                    </InputGroupAddon>
-                  </InputGroup>
-                </Field>
-
-                <Field>
-                  <FieldLabel htmlFor="password">
-                    Confirm Password<span className="text-destructive">*</span>
-                  </FieldLabel>
-                  <InputGroup>
-                    <InputGroupInput
-                      id="confirm-password"
-                      name="confirm-password"
-                      type={showConfirmPassword ? "text" : "password"}
-                      placeholder="Repeat your password"
-                    />
-                    <InputGroupAddon>
-                      <RiLockLine />
-                    </InputGroupAddon>
-                    <InputGroupAddon
-                      align="inline-end"
-                      className="cursor-pointer"
-                    >
-                      {showConfirmPassword ? (
-                        <RiEye2Line onClick={handleShowConfirmPassword} />
-                      ) : (
-                        <RiEyeCloseLine onClick={handleShowConfirmPassword} />
                       )}
                     </InputGroupAddon>
                   </InputGroup>
