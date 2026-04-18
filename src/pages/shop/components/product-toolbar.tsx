@@ -13,13 +13,16 @@ function ProductToolbar({
   pageSize,
   total,
 }: ProductToolbarProps) {
+  const totalProductsShow = page * pageSize
+  const isTotalProducts = totalProductsShow >= Number(total)
+
   return (
     <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
       <p className="text-sm text-muted-foreground">
         Showing{" "}
         <span className="font-medium text-foreground">
           {products.length === 0 ? 0 : (page - 1) * pageSize + 1}–
-          {page * pageSize}
+          {isTotalProducts ? total : totalProductsShow}
         </span>{" "}
         of <span className="font-medium text-foreground">{total} </span>
         products

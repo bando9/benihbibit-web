@@ -16,7 +16,7 @@ function ProductBreadcrumb({ name }: { name: string }) {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
+          <BreadcrumbLink href="/products">Shop</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>

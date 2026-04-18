@@ -20,7 +20,7 @@ export default function ProductFeatured({ products }: ProductsTypeProps) {
       </div>
 
       <div className="mt-7 w-full text-center">
-        <Link to="/shop">
+        <Link to="/products">
           <Button className="w-3/4 cursor-pointer">View all products</Button>
         </Link>
       </div>

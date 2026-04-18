@@ -8,10 +8,12 @@ import ProductToolbar from "./components/product-toolbar"
 import ProductPagination from "./components/product-pagination"
 import type { ProductSortBy } from "@/types"
 import FilterPanel from "./components/filter-panel"
+import { useSearchParams } from "react-router"
 
 function Shop() {
   const [sortBy, setSortBy] = useState<ProductSortBy>("createdAt")
-  const page = 1
+  const [searchParams] = useSearchParams()
+  const page = Number(searchParams.get("page") || 1)
   const pageSize = 9
 
   const { data, isLoading, error } = useQuery({
@@ -75,17 +77,19 @@ function Shop() {
             </aside>
 
             <div className="min-w-0 flex-1">
-              <ProductToolbar
-                products={products}
-                page={page}
-                pageSize={pageSize}
-                total={total}
-              />
-
               {products?.length > 0 ? (
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                  <ProductList products={products} showAddToCart={true} />
-                </div>
+                <>
+                  <ProductToolbar
+                    products={products}
+                    page={page}
+                    pageSize={pageSize}
+                    total={total}
+                  />
+
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                    <ProductList products={products} showAddToCart={true} />
+                  </div>
+                </>
               ) : (
                 <ProductEmpty resetFilters={resetFilters} />
               )}
