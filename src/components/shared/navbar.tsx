@@ -11,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { useUser } from "@/modules/auth/hooks"
 
 function Navbar() {
-  const { isAuthenticated, logout } = useUser()
+  const { isAuthenticated } = useUser()
 
   const isCartFilled = true
 
@@ -50,33 +50,41 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" className="cursor-pointer">
+          {isAuthenticated ? (
+            <Button asChild variant="outline" className="cursor-pointer">
+              <Link to="/dashboard">
                 <RiUserLine />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent align="center" className="w-40">
-              {isAuthenticated ? (
-                <Button
-                  variant="ghost"
-                  className="cursor-pointer"
-                  onClick={logout}
-                >
-                  Logout
-                </Button>
-              ) : (
-                <>
-                  <Button variant="outline" className="cursor-pointer" asChild>
-                    <Link to="/login">Login</Link>
+              </Link>
+            </Button>
+          ) : (
+            <>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="cursor-pointer">
+                    <RiUserLine />
                   </Button>
-                  <Button variant="outline" className="cursor-pointer" asChild>
-                    <Link to="/register">Register</Link>
-                  </Button>
-                </>
-              )}
-            </PopoverContent>
-          </Popover>
+                </PopoverTrigger>
+                <PopoverContent align="center" className="w-40">
+                  <>
+                    <Button
+                      variant="outline"
+                      className="cursor-pointer"
+                      asChild
+                    >
+                      <Link to="/login">Login</Link>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="cursor-pointer"
+                      asChild
+                    >
+                      <Link to="/register">Register</Link>
+                    </Button>
+                  </>
+                </PopoverContent>
+              </Popover>
+            </>
+          )}
 
           {isCartFilled ? (
             <Button variant="outline" className="cursor-pointer" asChild>

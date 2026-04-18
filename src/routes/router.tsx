@@ -2,6 +2,7 @@ import AuthLayout from "@/layouts/auth-layout"
 import MainLayout from "@/layouts/main-layout"
 import About from "@/pages/about/about"
 import Login from "@/pages/auth/login"
+import ProtectedRoute from "@/pages/auth/protected-route"
 import Register from "@/pages/auth/register"
 import Cart from "@/pages/cart/cart"
 import Contact from "@/pages/contact/contact"
@@ -22,14 +23,19 @@ export const router = createBrowserRouter([
       { path: "about", Component: About },
       { path: "contact", Component: Contact },
       { path: "products", Component: Shop },
-      { path: "cart", Component: Cart },
-      { path: "dashboard", Component: Dashboard },
       {
         path: "product/:slug",
         loader: async ({ params }) => {
           return { slug: params.slug }
         },
         Component: ProductDetail,
+      },
+      {
+        Component: ProtectedRoute,
+        children: [
+          { path: "cart", Component: Cart },
+          { path: "dashboard", Component: Dashboard },
+        ],
       },
     ],
   },

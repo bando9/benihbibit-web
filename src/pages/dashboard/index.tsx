@@ -8,13 +8,46 @@ function Dashboard() {
   if (error) return null
 
   return (
-    <div className="mx-15">
-      <h1>Dashboard</h1>
+    <div className="m-15">
+      <div className="rounded-2xl border border-border bg-card p-6">
+        <header className="mb-8">
+          <h1 className="text-2xl font-bold">Hello, {user?.name}!</h1>
+          <p className="text-sm text-muted-foreground">
+            Manage your plant-growing identity here.
+          </p>
+        </header>
 
-      <p>{user?.username}</p>
-      <p>{user?.name}</p>
-      <p>{user?.email}</p>
-      <Button onClick={logout}>Logout</Button>
+        <div className="space-y-4">
+          <div className="flex flex-col border-b pb-2">
+            <span className="text-xs font-medium text-primary uppercase">
+              Full Name
+            </span>
+            <span className="text-lg font-semibold">{user?.name}</span>
+          </div>
+
+          <div className="flex flex-col border-b pb-2">
+            <span className="text-xs font-medium text-primary uppercase">
+              Username
+            </span>
+            <span className="text-lg font-semibold text-muted-foreground">
+              @{user?.username}
+            </span>
+          </div>
+
+          <div className="flex flex-col border-b pb-2">
+            <span className="text-xs font-medium text-primary uppercase">
+              Email Address
+            </span>
+            <span className="text-lg font-semibold">{user?.email}</span>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <Button variant="outline" onClick={logout}>
+            Log Out
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }
