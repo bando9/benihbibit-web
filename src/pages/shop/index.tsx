@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import { useState } from "react"
 import ProductEmpty from "@/modules/products/components/product-empty"
 import { useQuery } from "@tanstack/react-query"
 import { client } from "@/modules/products/api/fetch"
@@ -6,26 +6,35 @@ import ProductList from "@/components/shared/product-list"
 import ShopHeader from "./components/shop-header"
 import ProductToolbar from "./components/product-toolbar"
 import ProductPagination from "./components/product-pagination"
-import type { ProductSortBy } from "@/types"
 import FilterPanel from "./components/filter-panel"
 import { useSearchParams } from "react-router"
 
 function Shop() {
-  const [sortBy, setSortBy] = useState<ProductSortBy>("createdAt")
   const [searchParams] = useSearchParams()
   const page = Number(searchParams.get("page") || 1)
   const pageSize = 9
 
+  const rawSort = searchParams.get("sortBy") || "newest"
+  let sortBy = "createdAt"
+  let sortOrder: "asc" | "desc" = "desc"
+
+  if (rawSort.includes("_")) {
+    const [field, order] = rawSort.split("_")
+    sortBy = field || "createdAt"
+    sortOrder = order === "asc" ? "asc" : "desc"
+  }
+
   const { data, isLoading, error } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", page, sortBy, sortOrder, pageSize],
     queryFn: async () => {
       const { data, error, response } = await client.GET("/products", {
         params: {
           query: {
             page: page,
             pageSize: pageSize,
-            sortBy: sortBy,
-            sortOrder: "desc",
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            sortBy: sortBy as any,
+            sortOrder: sortOrder,
           },
         },
       })
@@ -60,7 +69,7 @@ function Shop() {
   }
 
   const resetFilters = () => {
-    setSortBy("createdAt")
+    // setSortBy("createdAt")
   }
 
   return (

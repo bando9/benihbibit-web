@@ -14,15 +14,15 @@ type PaginationProps = {
 }
 
 function ProductPagination({ totalPages }: PaginationProps) {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const currentPage = Number(searchParams.get("page")) || 1
   const NumTotalPages = Number(totalPages)
 
-  const isRangePage = currentPage >= 1 && currentPage <= NumTotalPages
+  function createPageURL(pageNumber: number | string) {
+    const params = new URLSearchParams(searchParams)
+    params.set("page", pageNumber.toString())
 
-  function handleChangePage(newPage: number) {
-    searchParams.set("page", newPage.toString())
-    setSearchParams(searchParams)
+    return `/products?${params.toString()}`
   }
 
   return (
@@ -31,8 +31,12 @@ function ProductPagination({ totalPages }: PaginationProps) {
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              href={`/products?page=${currentPage - 1}`}
-              onClick={() => handleChangePage(currentPage - 1)}
+              className={
+                currentPage === 1
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              }
+              href={createPageURL(currentPage - 1)}
             />
           </PaginationItem>
 
@@ -44,7 +48,7 @@ function ProductPagination({ totalPages }: PaginationProps) {
               <PaginationLink
                 className="cursor-pointer"
                 isActive={isCurrentPage}
-                href={`/products?page=${page.toString()}`}
+                href={createPageURL(page)}
               >
                 {page}
               </PaginationLink>
@@ -61,23 +65,16 @@ function ProductPagination({ totalPages }: PaginationProps) {
             <></>
           )}
 
-          {isRangePage ? (
-            <>
-              <PaginationItem>
-                <PaginationNext
-                  href={`/products?page=${currentPage + 1}`}
-                  onClick={() => handleChangePage(currentPage + 1)}
-                  // aria-disabled={isRangePage}
-                  aria-disabled={!isRangePage}
-                  className={
-                    !isRangePage ? "pointer-events-none opacity-50" : undefined
-                  }
-                />
-              </PaginationItem>
-            </>
-          ) : (
-            <></>
-          )}
+          <PaginationItem>
+            <PaginationNext
+              className={
+                currentPage === NumTotalPages
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              }
+              href={createPageURL(currentPage + 1)}
+            />
+          </PaginationItem>
         </PaginationContent>
       </Pagination>
     </div>

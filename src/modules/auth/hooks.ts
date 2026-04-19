@@ -17,7 +17,7 @@ export function useAuth() {
   const logout = () => {
     removeCookie("token", { path: "/" })
     if (location.pathname == "/dashboard") {
-      navigate("/login")
+      navigate("/")
     }
   }
 
