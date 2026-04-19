@@ -48,11 +48,13 @@ function Register() {
       },
       {
         onSuccess: () => {
-          navigate("/login?registered=true", { replace: true })
+          navigate("/login?registered=true", {
+            replace: true,
+            state: { message: "Successfully to register new Account" },
+          })
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
-          // console.error(err)
           if (err?.error.code === "P2002") {
             console.error(err?.message)
           }

@@ -13,19 +13,28 @@ import {
   RiLockLine,
   RiMailLine,
 } from "@remixicon/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useAuth } from "@/modules/auth/hooks"
+import { toast, Toaster } from "sonner"
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const { setToken } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const { mutate, isPending } = $api.useMutation("post", "/auth/login")
+
+  useEffect(() => {
+    if (location.state?.message) {
+      toast(location.state?.message, { position: "top-center" })
+      navigate(location.pathname, { replace: true, state: {} })
+    }
+  }, [location, navigate])
 
   const form = useForm<z.infer<typeof RequestLoginSchema>>({
     resolver: zodResolver(RequestLoginSchema),
@@ -163,6 +172,7 @@ function Login() {
         </Link>
         .
       </p>
+      <Toaster />
     </div>
   )
 }
