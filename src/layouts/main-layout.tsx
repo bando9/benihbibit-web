@@ -1,5 +1,6 @@
 import Footer from "@/components/shared/footer"
 import Navbar from "@/components/shared/navbar"
+import { Toaster } from "@/components/ui/sonner"
 import { Outlet } from "react-router"
 
 function MainLayout() {
@@ -8,6 +9,7 @@ function MainLayout() {
       <Navbar />
       <Outlet />
       <Footer />
+      <Toaster />
     </div>
   )
 }

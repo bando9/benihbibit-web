@@ -43,7 +43,7 @@ function Dashboard() {
         </div>
 
         <div className="mt-8">
-          <Button variant="outline" onClick={logout}>
+          <Button variant="outline" onClick={logout} className="cursor-pointer">
             Log Out
           </Button>
         </div>

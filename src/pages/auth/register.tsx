@@ -69,6 +69,16 @@ function Register() {
     <div className="flex w-full flex-col justify-between rounded-xl bg-accent px-15 py-5">
       <div className="flex flex-col space-y-5">
         <div>
+          <Link
+            to="/"
+            className="mx-auto flex w-40 items-center justify-center space-x-1 pb-2"
+          >
+            <img src="/logo-icon.svg" alt="logo benihbunbun" className="w-6" />
+            <h3 className="text-xs font-semibold text-primary uppercase">
+              benihbunbun
+            </h3>
+          </Link>
+
           <h2 className="mb-1 text-2xl font-bold">Start Your Green Journey</h2>
           <p className="text-sm text-accent-foreground">
             Join 10,000+ plant lovers. Create an account to track your plant

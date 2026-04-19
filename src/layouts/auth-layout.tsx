@@ -3,6 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { Toaster } from "@/components/ui/sonner"
 import Autoplay from "embla-carousel-autoplay"
 import { Outlet } from "react-router"
 
@@ -36,7 +37,7 @@ const slideList = [
 
 function AuthLayout() {
   return (
-    <div className="grid grid-cols-2 gap-1 overflow-hidden px-30 pt-5 text-center">
+    <div className="grid grid-cols-2 gap-1 overflow-hidden px-30 pt-3 text-center">
       <Outlet />
       <Carousel
         plugins={[
@@ -47,21 +48,21 @@ function AuthLayout() {
         opts={{
           align: "start",
           loop: true,
-          // fade: true,
         }}
       >
-        <CarouselContent className="h-130 w-full rounded-xl object-cover">
+        <CarouselContent className="h-140 w-full rounded-xl object-cover">
           {slideList.map((slide) => (
             <CarouselItem key={slide.id}>
               <img
                 src={`${slide.url}`}
                 alt={slide.name}
-                className="h-130 w-full rounded-xl object-cover"
+                className="h-140 w-full rounded-xl object-cover"
               />
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
+      <Toaster />
     </div>
   )
 }

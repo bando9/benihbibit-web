@@ -10,7 +10,6 @@ interface ProductCardTypeProps {
 
 function handleAddToCart(e: React.MouseEvent<HTMLButtonElement>) {
   e.preventDefault()
-  console.log("tes")
 }
 
 function ProductCard({ product, showAddToCart }: ProductCardTypeProps) {
