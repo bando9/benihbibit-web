@@ -1,4 +1,3 @@
-// import { useState } from "react"
 import ProductEmpty from "@/modules/products/components/product-empty"
 import { useQuery } from "@tanstack/react-query"
 import { client } from "@/modules/products/api/fetch"

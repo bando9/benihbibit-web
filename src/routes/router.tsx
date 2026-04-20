@@ -5,6 +5,7 @@ import Login from "@/pages/auth/login"
 import ProtectedRoute from "@/pages/auth/protected-route"
 import Register from "@/pages/auth/register"
 import { Cart } from "@/pages/cart"
+import { CheckoutLayout } from "@/layouts/checkout-layout"
 import Contact from "@/pages/contact"
 import Dashboard from "@/pages/dashboard"
 import { Home } from "@/pages/home"
@@ -12,6 +13,7 @@ import NotFound from "@/pages/not-found"
 import ProductDetail from "@/pages/product-detail/product-detail"
 import Shop from "@/pages/shop"
 import { createBrowserRouter } from "react-router"
+import CheckoutPage from "@/pages/checkout"
 
 export const router = createBrowserRouter([
   {
@@ -45,5 +47,9 @@ export const router = createBrowserRouter([
       { path: "login", Component: Login },
       { path: "register", Component: Register },
     ],
+  },
+  {
+    Component: CheckoutLayout,
+    children: [{ path: "checkout", Component: CheckoutPage }],
   },
 ])
