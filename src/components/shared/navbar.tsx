@@ -4,8 +4,13 @@ import {
   RiShoppingCartLine,
   RiUserLine,
 } from "@remixicon/react"
-import { Link } from "react-router"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "../ui/input-group"
+import { Form, Link } from "react-router"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "../ui/input-group"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { useUser } from "@/modules/auth/hooks"
@@ -41,12 +46,21 @@ function Navbar() {
 
       <div className="items-center justify-center space-x-5 text-[#15281f] md:flex">
         <div className="w-full cursor-pointer rounded-3xl p-1.5 text-center">
-          <InputGroup>
-            <InputGroupInput placeholder="Search..." />
-            <InputGroupAddon>
-              <RiSearchLine />
-            </InputGroupAddon>
-          </InputGroup>
+          <Form action="/products" method="get">
+            <InputGroup>
+              <InputGroupInput
+                placeholder="Type to search..."
+                name="q"
+                required
+              />
+              <InputGroupAddon>
+                <RiSearchLine />
+              </InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton variant="outline">Search</InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </Form>
         </div>
 
         <div className="flex items-center gap-2">

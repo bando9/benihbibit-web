@@ -16,6 +16,7 @@ function Shop() {
   const rawSort = searchParams.get("sortBy") || "newest"
   let sortBy = "createdAt"
   let sortOrder: "asc" | "desc" = "desc"
+  const q = searchParams.get("q") || ""
 
   if (rawSort.includes("_")) {
     const [field, order] = rawSort.split("_")
@@ -34,6 +35,7 @@ function Shop() {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             sortBy: sortBy as any,
             sortOrder: sortOrder,
+            q: q,
           },
         },
       })
