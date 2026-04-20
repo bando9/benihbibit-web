@@ -55,6 +55,7 @@ export interface paths {
                     maxPrice?: number | null;
                     sortOrder?: "desc" | "asc";
                     sortBy?: "createdAt" | "price" | "name";
+                    q?: string;
                 };
                 header?: never;
                 path?: never;
@@ -83,42 +84,6 @@ export interface paths {
                             updatedAt: string;
                         }[];
                     };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/products/search": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description Search product by name or sku */
-        get: {
-            parameters: {
-                query: {
-                    q: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Success get query search */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
                 };
             };
         };
