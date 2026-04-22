@@ -8,8 +8,8 @@ function MainLayout() {
     <div className="flex min-h-screen flex-col justify-between">
       <Navbar />
       <Outlet />
-      <Footer />
       <Toaster />
+      <Footer />
     </div>
   )
 }
