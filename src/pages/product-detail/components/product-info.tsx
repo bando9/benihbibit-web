@@ -47,7 +47,7 @@ function ProductInfo({
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-primary" />
             <span className="text-sm font-medium text-primary">In Stock</span>
             <span className="text-sm text-muted-foreground">
-              — {product.stockQuantity} units available
+              — {product.stockQuantity} pcs available
             </span>
           </>
         )}

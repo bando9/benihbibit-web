@@ -29,3 +29,16 @@ export const RequestLoginSchema = z.object({
 export interface CookieValues {
   token: string
 }
+
+export interface CartItem {
+  id: string
+  product: ProductType
+  productId: string
+  quantity: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CartItemProps {
+  item: CartItem
+}
