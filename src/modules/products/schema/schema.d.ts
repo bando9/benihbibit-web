@@ -182,6 +182,7 @@ export interface paths {
                             name: string;
                             /** @example example123 */
                             username: string;
+                            cart?: unknown;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
@@ -237,6 +238,7 @@ export interface paths {
                             name: string;
                             /** @example example123 */
                             username: string;
+                            cart?: unknown;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
@@ -245,7 +247,7 @@ export interface paths {
                     };
                 };
                 /** @description User not registered yet */
-                400: {
+                401: {
                     headers: {
                         [name: string]: unknown;
                     };
@@ -286,6 +288,7 @@ export interface paths {
                         username: string;
                         /** @example example@example.com */
                         email: string;
+                        cart?: unknown;
                         /** @example password@123 */
                         password: string;
                     };
@@ -306,6 +309,7 @@ export interface paths {
                             username: string;
                             /** @example example@example.com */
                             email: string;
+                            cart?: unknown;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
@@ -356,6 +360,7 @@ export interface paths {
                     "application/json": {
                         /** @example example@example.com */
                         email: string;
+                        cart?: unknown;
                         /** @example password@123 */
                         password: string;
                     };
@@ -427,6 +432,7 @@ export interface paths {
                             username: string;
                             /** @example example@example.com */
                             email: string;
+                            cart?: unknown;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
@@ -453,6 +459,216 @@ export interface paths {
         put?: never;
         post?: never;
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/cart": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get cart user */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Get user's cart */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            id: string;
+                            userId: string;
+                            items: {
+                                id: string;
+                                product: {
+                                    id: string;
+                                    slug: string;
+                                    name: string;
+                                    sku: string;
+                                    price: number;
+                                    stockQuantity: number;
+                                    imageUrl: string;
+                                    description: string;
+                                    /** Format: date-time */
+                                    createdAt: string;
+                                    /** Format: date-time */
+                                    updatedAt: string;
+                                };
+                                productId: string;
+                                quantity: number;
+                                /** Format: date-time */
+                                createdAt: string;
+                                /** Format: date-time */
+                                updatedAt: string;
+                            }[];
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                    };
+                };
+                /** @description cart user not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/cart/items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": {
+                        productId: string;
+                        quantity: number;
+                    };
+                };
+            };
+            responses: {
+                /** @description update items */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            id: string;
+                            product: {
+                                id: string;
+                                slug: string;
+                                name: string;
+                                sku: string;
+                                price: number;
+                                stockQuantity: number;
+                                imageUrl: string;
+                                description: string;
+                                /** Format: date-time */
+                                createdAt: string;
+                                /** Format: date-time */
+                                updatedAt: string;
+                            };
+                            productId: string;
+                            quantity: number;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                    };
+                };
+                /** @description items empty */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": {
+                        productId: string;
+                        quantity: number;
+                    };
+                };
+            };
+            responses: {
+                /** @description Success add product */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Failed */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/cart/items/{productId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    productId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success delete item */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
         options?: never;
         head?: never;
         patch?: never;
