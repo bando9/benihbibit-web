@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useAuth } from "@/modules/auth/hooks"
+import { $api } from "@/modules/products/api"
 import type { ProductType } from "@/types"
 import { formattedCurrency } from "@/utils/common"
 import {
@@ -23,6 +25,17 @@ function ProductInfo({
   addQuantity,
   quantity,
 }: ProductDetailProps) {
+  const { token } = useAuth()
+
+  const { mutate } = $api.useMutation("post", "/cart/items")
+
+  function handleAddToCart() {
+    mutate({
+      body: { quantity: quantity, productId: product.id },
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  }
+
   return (
     <div className="flex flex-col gap-2.5">
       <div>
@@ -100,7 +113,10 @@ function ProductInfo({
         </div>
 
         <div className="flex w-full flex-1 gap-3 sm:w-auto">
-          <Button className="h-11 flex-1 cursor-pointer gap-2 rounded-full">
+          <Button
+            onClick={handleAddToCart}
+            className="h-11 flex-1 cursor-pointer gap-2 rounded-full"
+          >
             <RiShoppingCartLine size={16} /> Add to Cart
           </Button>
           <Button
