@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useAuth } from "@/modules/auth/hooks"
 import { $api } from "@/modules/products/api"
@@ -16,7 +17,18 @@ function CartItemCard({ item }: CartItemProps) {
     },
   })
 
+  const { mutate: deleteItem } = $api.useMutation(
+    "delete",
+    "/cart/items/{productId}",
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["get", "/cart"] })
+      },
+    }
+  )
+
   function handleIncreaseProduct() {
+    if (item.quantity >= item.product.stockQuantity) return
     mutate({
       body: {
         productId: item.product.id,
@@ -34,6 +46,13 @@ function CartItemCard({ item }: CartItemProps) {
         quantity: item.quantity - 1,
       },
       headers: { Authorization: `Bearer ${token}` },
+    })
+  }
+
+  function handleDeleteCartItem() {
+    deleteItem({
+      headers: { Authorization: `Bearer ${token}` },
+      params: { path: { productId: item.productId } },
     })
   }
 
@@ -76,9 +95,13 @@ function CartItemCard({ item }: CartItemProps) {
                 +
               </button>
             </div>
-            <button className="cursor-pointer text-muted-foreground transition-colors hover:text-destructive">
+            <Button
+              className="cursor-pointer text-muted-foreground transition-colors hover:text-destructive"
+              variant="outline"
+              onClick={handleDeleteCartItem}
+            >
               <RiDeleteBinLine size={20} />
-            </button>
+            </Button>
           </div>
         </div>
       </CardContent>
