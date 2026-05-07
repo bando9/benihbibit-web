@@ -21,8 +21,6 @@ export function Cart() {
     headers: { Authorization: `Bearer ${token}` },
   })
 
-  console.log(cartUser)
-
   if (!cartUser) {
     return <>Cart not found</>
   }
