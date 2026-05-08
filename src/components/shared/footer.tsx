@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="mb-5 flex items-center justify-center space-x-1">
           <img src="/logo-icon.svg" alt="logo benihbunbun" className="w-10" />
           <h3 className="text-base font-semibold text-accent uppercase">
-            benihbunbun
+            benihbibit
           </h3>
         </div>
         <ul className="mt-3 flex space-x-10 text-accent">

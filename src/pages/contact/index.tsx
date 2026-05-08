@@ -55,10 +55,10 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
                   <a
-                    href="mailto:hello@benihbunbun.com"
+                    href="mailto:hello@benihbibit.com"
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
-                    hello@benihbunbun.com
+                    hello@benihbibit.com
                   </a>
                 </div>
               </div>

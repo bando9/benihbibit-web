@@ -56,6 +56,8 @@ function CartItemCard({ item }: CartItemProps) {
     })
   }
 
+  const totalPriceItem = item.product.price * item.quantity
+
   return (
     <Card key={item.id} className="overflow-hidden">
       <CardContent className="flex items-center gap-4 p-4 sm:gap-6 sm:p-6">
@@ -76,6 +78,9 @@ function CartItemCard({ item }: CartItemProps) {
               {formattedCurrency(item.product.price)}
             </p>
           </div>
+          <p className="text-base font-bold text-primary">
+            {formattedCurrency(totalPriceItem)}
+          </p>
 
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="flex items-center rounded-md border">

@@ -80,9 +80,9 @@ function Login() {
             to="/"
             className="mx-auto flex w-40 items-center justify-center space-x-1 pb-2"
           >
-            <img src="/logo-icon.svg" alt="logo benihbunbun" className="w-6" />
+            <img src="/logo-icon.svg" alt="logo benihbibit" className="w-6" />
             <h3 className="text-xs font-semibold text-primary uppercase">
-              benihbunbun
+              benihbibit
             </h3>
           </Link>
           <h2 className="mb-1 text-2xl">

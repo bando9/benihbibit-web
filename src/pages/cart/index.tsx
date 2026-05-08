@@ -22,7 +22,7 @@ export function Cart() {
   })
 
   if (!cartUser) {
-    return <>Cart not found</>
+    return <EmptyCart />
   }
 
   const cartItems = cartUser?.items

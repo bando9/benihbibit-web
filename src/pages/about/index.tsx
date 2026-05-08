@@ -30,13 +30,13 @@ export default function About() {
       title: "Empowerment",
       icon: RiTeamLine,
       description:
-        "Benihbunbun ingin membawa manfaat lebih untuk masyarakat di sekitar rumah produksi. Saat ini, secara bertahap kami mengajak Ibu-Ibu Rumah Tangga untuk ikut berpartisipasi dalam pengolahan dan pengelolaan untuk memenuhi kebutuhan produksi. Seperti: memilah sampah dan mengumpulkan kertas bekas, panen dan koleksi benih, dan lain-lain.",
+        "benihbibit ingin membawa manfaat lebih untuk masyarakat di sekitar rumah produksi. Saat ini, secara bertahap kami mengajak Ibu-Ibu Rumah Tangga untuk ikut berpartisipasi dalam pengolahan dan pengelolaan untuk memenuhi kebutuhan produksi. Seperti: memilah sampah dan mengumpulkan kertas bekas, panen dan koleksi benih, dan lain-lain.",
     },
     {
       title: "Education",
       icon: RiBookOpenLine,
       description:
-        "Tak hanya membuat produk, kami juga mengedukasi dalam bentuk tulisan artikel pada website ini dan mengadakan workshop/training offline maupun online. Setiap pembelian produk benihbunbun, akan mendapatkan layanan konsultasi, challenge menanam souvenir kertas benih, dan informasi bahwa paket dikemas dengan menggunakan kardus reuse. Banyak hal yang ingin kami sampaikan. Setiap pengalaman yang kami alami dan temui, akan kami ceritakan dan share di media sosial kami.",
+        "Tak hanya membuat produk, kami juga mengedukasi dalam bentuk tulisan artikel pada website ini dan mengadakan workshop/training offline maupun online. Setiap pembelian produk benihbibit, akan mendapatkan layanan konsultasi, challenge menanam souvenir kertas benih, dan informasi bahwa paket dikemas dengan menggunakan kardus reuse. Banyak hal yang ingin kami sampaikan. Setiap pengalaman yang kami alami dan temui, akan kami ceritakan dan share di media sosial kami.",
     },
   ]
 
@@ -44,13 +44,13 @@ export default function About() {
     <div className="container mx-auto px-4 py-12 md:px-8 lg:px-20 lg:py-20">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
-          Cerita <span className="text-primary">benihbunbun</span>
+          Cerita <span className="text-primary">benihbibit</span>
         </h2>
         <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
           Ada yang menarik dari keinginan tak ingin menjadi sia-sia. Bagi kami,
           menjadi sia-sia hanyalah ungkapan karena belum ada rasa keinginan
           untuk membuatnya jadi lebih bermanfaat. Dari sinilah akhirnya,
-          benihbunbun hadir.
+          benihbibit hadir.
         </p>
       </div>
 
