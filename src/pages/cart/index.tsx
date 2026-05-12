@@ -31,10 +31,7 @@ export function Cart() {
     return <>error:${error}</>
   }
 
-  const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
-    0
-  )
+  const totalPrice = cartUser.totalPrice
 
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8 md:py-12">

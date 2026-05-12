@@ -508,11 +508,13 @@ export interface paths {
                                 };
                                 productId: string;
                                 quantity: number;
+                                subTotalPrice: number;
                                 /** Format: date-time */
                                 createdAt: string;
                                 /** Format: date-time */
                                 updatedAt: string;
                             }[];
+                            totalPrice: number;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
@@ -585,6 +587,7 @@ export interface paths {
                             };
                             productId: string;
                             quantity: number;
+                            subTotalPrice: number;
                             /** Format: date-time */
                             createdAt: string;
                             /** Format: date-time */
