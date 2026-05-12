@@ -27,15 +27,11 @@ export function Cart() {
 
   const cartItems = cartUser?.items
 
-  if (isLoading) {
-    return <>loading...</>
-  }
-
   if (error) {
     return <>error:${error}</>
   }
 
-  const subtotal = cartItems.reduce(
+  const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
   )
@@ -44,7 +40,7 @@ export function Cart() {
     <div className="container mx-auto max-w-6xl px-4 py-8 md:py-12">
       <h1 className="mb-8 text-2xl font-bold md:text-3xl">Keranjang Belanja</h1>
 
-      {cartItems.length == 0 ? (
+      {cartItems.length == 0 || isLoading ? (
         <EmptyCart />
       ) : (
         <div className="flex flex-col items-start gap-8 lg:flex-row">
@@ -57,10 +53,10 @@ export function Cart() {
               <div className="mb-6 space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">
-                    Total Harga ({cartItems.length} barang)
+                    Total ({cartItems.length} produk)
                   </span>
                   <span className="font-medium">
-                    {formattedCurrency(subtotal)}
+                    {formattedCurrency(totalPrice)}
                   </span>
                 </div>
               </div>
@@ -70,7 +66,7 @@ export function Cart() {
               <div className="mb-6 flex items-center justify-between">
                 <span className="text-base font-bold">Total Tagihan</span>
                 <span className="text-xl font-bold text-primary">
-                  {formattedCurrency(subtotal)}
+                  {formattedCurrency(totalPrice)}
                 </span>
               </div>
 

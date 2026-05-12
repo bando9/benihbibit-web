@@ -6,6 +6,7 @@ import type { CartItemProps } from "@/types"
 import { formattedCurrency } from "@/utils/common"
 import { RiDeleteBinLine } from "@remixicon/react"
 import { useQueryClient } from "@tanstack/react-query"
+import { Link } from "react-router"
 
 function CartItemCard({ item }: CartItemProps) {
   const { token } = useAuth()
@@ -61,13 +62,16 @@ function CartItemCard({ item }: CartItemProps) {
   return (
     <Card key={item.id} className="overflow-hidden">
       <CardContent className="flex items-center gap-4 p-4 sm:gap-6 sm:p-6">
-        <div className="h-20 w-20 shrink-0 overflow-hidden rounded-md bg-muted sm:h-24 sm:w-24">
+        <Link
+          to={`/product/${item.product.slug}`}
+          className="h-20 w-20 shrink-0 overflow-hidden rounded-md bg-muted sm:h-24 sm:w-24"
+        >
           <img
             src={item.product.imageUrl}
             alt={item.product.name}
             className="h-full w-full object-cover"
           />
-        </div>
+        </Link>
 
         <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
@@ -78,11 +82,11 @@ function CartItemCard({ item }: CartItemProps) {
               {formattedCurrency(item.product.price)}
             </p>
           </div>
-          <p className="text-base font-bold text-primary">
-            {formattedCurrency(totalPriceItem)}
-          </p>
 
           <div className="flex items-center gap-4 sm:gap-6">
+            <p className="text-base font-bold text-primary">
+              {formattedCurrency(totalPriceItem)}
+            </p>
             <div className="flex items-center rounded-md border">
               <button
                 className="cursor-pointer px-3 py-1 transition-colors hover:bg-muted"

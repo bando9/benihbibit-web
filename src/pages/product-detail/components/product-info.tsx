@@ -11,6 +11,7 @@ import {
   RiSubtractLine,
   RiTruckLine,
 } from "@remixicon/react"
+import { toast } from "sonner"
 
 interface ProductDetailProps {
   product: ProductType
@@ -30,10 +31,24 @@ function ProductInfo({
   const { mutate } = $api.useMutation("post", "/cart/items")
 
   function handleAddToCart() {
-    mutate({
-      body: { quantity: quantity, productId: product.id },
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    mutate(
+      {
+        body: { quantity: quantity, productId: product.id },
+        headers: { Authorization: `Bearer ${token}` },
+      },
+      {
+        onSuccess: () => {
+          toast.success("produk berhasil ditambahkan ke keranjang", {
+            position: "top-center",
+          })
+        },
+        onError: () => {
+          toast.error("Produk sudah ditambahkan maksimal stock", {
+            position: "top-center",
+          })
+        },
+      }
+    )
   }
 
   return (
@@ -118,12 +133,6 @@ function ProductInfo({
             className="h-11 flex-1 cursor-pointer gap-2 rounded-full"
           >
             <RiShoppingCartLine size={16} /> Add to Cart
-          </Button>
-          <Button
-            variant="outline"
-            className="h-11 flex-1 cursor-pointer rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-          >
-            Buy Now
           </Button>
         </div>
       </div>
