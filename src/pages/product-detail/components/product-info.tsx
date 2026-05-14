@@ -11,13 +11,16 @@ import {
   RiSubtractLine,
   RiTruckLine,
 } from "@remixicon/react"
+import type { ChangeEvent } from "react"
 import { toast } from "sonner"
 
 interface ProductDetailProps {
   product: ProductType
   subQuantity: () => void
   addQuantity: () => void
-  quantity: number
+  quantity: number | string
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleInputBlur: () => void
 }
 
 function ProductInfo({
@@ -25,6 +28,8 @@ function ProductInfo({
   subQuantity,
   addQuantity,
   quantity,
+  handleInputChange,
+  handleInputBlur,
 }: ProductDetailProps) {
   const { token } = useAuth()
 
@@ -33,7 +38,7 @@ function ProductInfo({
   function handleAddToCart() {
     mutate(
       {
-        body: { quantity: quantity, productId: product.id },
+        body: { quantity: Number(quantity), productId: product.id },
         headers: { Authorization: `Bearer ${token}` },
       },
       {
@@ -116,8 +121,13 @@ function ProductInfo({
             <RiSubtractLine size={16} />
           </button>
           <Input
-            className="w-12 border-0 text-center font-semibold text-foreground tabular-nums focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="w-12 appearance-none border-0 text-center font-semibold text-foreground tabular-nums focus-visible:ring-0 focus-visible:ring-offset-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             value={quantity}
+            onChange={handleInputChange}
+            onFocus={(e) => e.target.select()}
+            onBlur={handleInputBlur}
+            min={1}
+            type="number"
           />
           <button
             onClick={addQuantity}

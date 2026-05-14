@@ -1,12 +1,12 @@
 import { $api } from "@/modules/products/api"
-import { useState } from "react"
+import { useState, type ChangeEvent } from "react"
 import { useParams } from "react-router"
 import ProductBreadcrumb from "./components/product-breadcrumb"
 import ProductInfo from "./components/product-info"
 import ProductCard from "@/components/shared/product-card"
 
 const ProductDetail = () => {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState<number | string>(1)
 
   const { slug } = useParams<{ slug: string }>()
 
@@ -42,14 +42,37 @@ const ProductDetail = () => {
   const maxQuantity = product?.stockQuantity
 
   function subQuantity() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
+    const currentQuantity = Number(quantity)
+    if (currentQuantity > 1) {
+      setQuantity(currentQuantity - 1)
     }
   }
 
   function addQuantity() {
-    if (quantity < maxQuantity) {
-      setQuantity(quantity + 1)
+    const currentQuantity = Number(quantity)
+
+    if (currentQuantity < maxQuantity) {
+      setQuantity(currentQuantity + 1)
+    }
+  }
+
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value
+
+    if (value === "") {
+      setQuantity("")
+      return
+    }
+
+    const inputValue = Number(value)
+    if (!isNaN(inputValue)) {
+      setQuantity(inputValue)
+    }
+  }
+
+  function handleInputBlur() {
+    if (quantity == "" || Number(quantity) < 1) {
+      setQuantity(1)
     }
   }
 
@@ -72,6 +95,8 @@ const ProductDetail = () => {
             subQuantity={subQuantity}
             addQuantity={addQuantity}
             quantity={quantity}
+            handleInputChange={handleInputChange}
+            handleInputBlur={handleInputBlur}
           />
         </div>
 
@@ -81,7 +106,7 @@ const ProductDetail = () => {
           </h2>
           <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {products?.map((product) => (
-              <ProductCard product={product} />
+              <ProductCard product={product} key={product.id} />
             ))}
           </div>
         </section>

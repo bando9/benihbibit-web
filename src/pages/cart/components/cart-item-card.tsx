@@ -12,11 +12,15 @@ function CartItemCard({ item }: CartItemProps) {
   const { token } = useAuth()
   const queryClient = useQueryClient()
 
-  const { mutate } = $api.useMutation("put", "/cart/items", {
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get", "/cart"] })
-    },
-  })
+  const { mutate, isPending: isUpdating } = $api.useMutation(
+    "put",
+    "/cart/items",
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["get", "/cart"] })
+      },
+    }
+  )
 
   const { mutate: deleteItem } = $api.useMutation(
     "delete",
@@ -57,7 +61,7 @@ function CartItemCard({ item }: CartItemProps) {
     })
   }
 
-  const totalPriceItem = item.product.price * item.quantity
+  const totalPriceItem = item.subTotalPrice
 
   return (
     <Card key={item.id} className="overflow-hidden">
@@ -91,6 +95,7 @@ function CartItemCard({ item }: CartItemProps) {
               <button
                 className="cursor-pointer px-3 py-1 transition-colors hover:bg-muted"
                 onClick={handleDecreaseProduct}
+                disabled={isUpdating}
               >
                 -
               </button>
@@ -100,6 +105,7 @@ function CartItemCard({ item }: CartItemProps) {
               <button
                 className="cursor-pointer px-3 py-1 transition-colors hover:bg-muted"
                 onClick={handleIncreaseProduct}
+                disabled={isUpdating}
               >
                 +
               </button>

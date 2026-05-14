@@ -522,8 +522,8 @@ export interface paths {
                         };
                     };
                 };
-                /** @description cart user not found */
-                404: {
+                /** @description Internal server error */
+                500: {
                     headers: {
                         [name: string]: unknown;
                     };

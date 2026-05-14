@@ -14,6 +14,9 @@ export type ProductQueryParamsType =
 
 export type ProductSortBy = NonNullable<ProductQueryParamsType>["sortBy"]
 
+export type CartItemType =
+  paths["/cart/items"]["put"]["responses"]["200"]["content"]["application/json"]
+
 export const RequestRegisterSchema = z.object({
   name: z.string(),
   username: z.string(),
@@ -30,15 +33,10 @@ export interface CookieValues {
   token: string
 }
 
-export interface CartItem {
-  id: string
-  product: ProductType
-  productId: string
-  quantity: number
-  createdAt: string
-  updatedAt: string
+export interface CartItemProps {
+  item: CartItemType
 }
 
-export interface CartItemProps {
-  item: CartItem
+export interface CartItemsProps {
+  cartItems: CartItemType[]
 }

@@ -1,9 +1,5 @@
-import type { CartItem } from "@/types"
+import type { CartItemsProps } from "@/types"
 import CartItemCard from "./cart-item-card"
-
-export interface CartItemsProps {
-  cartItems: CartItem[]
-}
 
 function CartItemList({ cartItems }: CartItemsProps) {
   return (
