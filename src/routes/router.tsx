@@ -14,8 +14,14 @@ import ProductDetail from "@/pages/product-detail/product-detail"
 import Shop from "@/pages/shop"
 import { createBrowserRouter } from "react-router"
 import CheckoutPage from "@/pages/checkout"
+import HomePageTest from "@/pages/home/page"
+import LoginTes from "@/pages/auth/login-tes"
+import ProductsTes from "@/pages/shop/index-tes"
 
 export const router = createBrowserRouter([
+  { path: "login-tes", Component: LoginTes },
+  { path: "tes", Component: HomePageTest },
+  { path: "products-tes", Component: ProductsTes },
   {
     path: "/",
     Component: MainLayout,
